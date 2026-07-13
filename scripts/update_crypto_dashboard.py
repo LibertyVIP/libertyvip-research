@@ -16,12 +16,31 @@ CRYPTO_DIR = ROOT / "crypto"
 ASSETS_PATH = CRYPTO_DIR / "assets.json"
 BINANCE_FUTURES = "https://fapi.binance.com"
 BINANCE_SPOT = "https://api.binance.com"
+DEFILLAMA = "https://api.llama.fi"
+DEFILLAMA_STABLES = "https://stablecoins.llama.fi"
+
+DEFILLAMA_CHAIN_BY_SYMBOL = {
+    "BTCUSDT": "Bitcoin",
+    "ETHUSDT": "Ethereum",
+    "SOLUSDT": "Solana",
+    "SUIUSDT": "Sui",
+    "XRPUSDT": "XRPL",
+    "BNBUSDT": "BSC",
+    "ZECUSDT": None,
+}
 
 
 def request_json(url: str) -> object:
     req = Request(url, headers={"User-Agent": "LibertyVIP Research/1.0"})
     with urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
+
+
+def safe_request_json(url: str) -> object | None:
+    try:
+        return request_json(url)
+    except Exception:
+        return None
 
 
 def fetch_klines(symbol: str, interval: str, limit: int = 220) -> list[dict[str, float]]:
@@ -167,6 +186,31 @@ def fmt_price(value: float) -> str:
     return f"{value:,.6f}"
 
 
+def fmt_money(value: object) -> str:
+    if not isinstance(value, (int, float)) or not math.isfinite(float(value)):
+        return "n/a"
+    value = float(value)
+    if abs(value) >= 1_000_000_000:
+        return f"${value / 1_000_000_000:.2f}B"
+    if abs(value) >= 1_000_000:
+        return f"${value / 1_000_000:.2f}M"
+    if abs(value) >= 1_000:
+        return f"${value / 1_000:.2f}K"
+    return f"${value:.2f}"
+
+
+def fmt_pct(value: object) -> str:
+    if not isinstance(value, (int, float)) or not math.isfinite(float(value)):
+        return "n/a"
+    return f"{float(value):+.2f}%"
+
+
+def numeric(value: object) -> float | None:
+    if isinstance(value, (int, float)) and math.isfinite(float(value)):
+        return float(value)
+    return None
+
+
 def load_config() -> dict[str, object]:
     if ASSETS_PATH.exists():
         return json.loads(ASSETS_PATH.read_text(encoding="utf-8"))
@@ -178,15 +222,69 @@ def load_config() -> dict[str, object]:
     }
 
 
+def fetch_defillama_context(symbols: list[str]) -> dict[str, dict[str, object]]:
+    chains_raw = safe_request_json(f"{DEFILLAMA}/v2/chains")
+    stables_raw = safe_request_json(f"{DEFILLAMA_STABLES}/stablecoinchains")
+    chains = {item.get("name"): item for item in chains_raw} if isinstance(chains_raw, list) else {}
+    stables = {item.get("name"): item for item in stables_raw} if isinstance(stables_raw, list) else {}
+    unique_chains = sorted(
+        {DEFILLAMA_CHAIN_BY_SYMBOL.get(symbol) for symbol in symbols if DEFILLAMA_CHAIN_BY_SYMBOL.get(symbol)}
+    )
+    dex_by_chain: dict[str, dict[str, object]] = {}
+    fees_by_chain: dict[str, dict[str, object]] = {}
+    for chain in unique_chains:
+        dex = safe_request_json(f"{DEFILLAMA}/overview/dexs/{chain}")
+        fees = safe_request_json(f"{DEFILLAMA}/overview/fees/{chain}")
+        if isinstance(dex, dict):
+            dex_by_chain[chain] = dex
+        if isinstance(fees, dict):
+            fees_by_chain[chain] = fees
+        time.sleep(0.15)
+
+    context: dict[str, dict[str, object]] = {}
+    for symbol in symbols:
+        chain = DEFILLAMA_CHAIN_BY_SYMBOL.get(symbol)
+        if not chain:
+            context[symbol] = {
+                "available": False,
+                "chain": None,
+                "note": "Pas de chain DeFiLlama pertinente pour cet actif.",
+            }
+            continue
+        chain_data = chains.get(chain, {})
+        stable_data = stables.get(chain, {})
+        stable_total = None
+        if isinstance(stable_data, dict):
+            total = stable_data.get("totalCirculatingUSD")
+            if isinstance(total, dict):
+                stable_total = sum(float(v) for v in total.values() if isinstance(v, (int, float)))
+        dex = dex_by_chain.get(chain, {})
+        fees = fees_by_chain.get(chain, {})
+        context[symbol] = {
+            "available": True,
+            "chain": chain,
+            "chainTvl": numeric(chain_data.get("tvl") if isinstance(chain_data, dict) else None),
+            "stablecoins": stable_total,
+            "dexVolume24h": numeric(dex.get("total24h")),
+            "dexChange1d": numeric(dex.get("change_1d")),
+            "dexChange7d": numeric(dex.get("change_7d")),
+            "fees24h": numeric(fees.get("total24h")),
+            "feesChange1d": numeric(fees.get("change_1d")),
+            "feesChange7d": numeric(fees.get("change_7d")),
+        }
+    return context
+
+
 def build_reports(config: dict[str, object]) -> list[dict[str, object]]:
     symbols = [str(s).upper() for s in config["symbols"]]  # type: ignore[index]
     timeframes = [str(t) for t in config["timeframes"]]  # type: ignore[index]
+    defillama = fetch_defillama_context(symbols)
     reports = []
     for symbol in symbols:
         for timeframe in timeframes:
             candles = fetch_klines(symbol, timeframe)
             structure = detect_structure(candles)
-            reports.append({"symbol": symbol, "timeframe": timeframe, **structure})
+            reports.append({"symbol": symbol, "timeframe": timeframe, **structure, "defillama": defillama.get(symbol, {})})
             time.sleep(0.15)
     return reports
 
@@ -198,6 +296,10 @@ def render_cards(reports: list[dict[str, object]]) -> str:
         bias = str(r["bias"])
         symbol = str(r["symbol"])
         timeframe = str(r["timeframe"])
+        llama = r.get("defillama", {})
+        if not isinstance(llama, dict):
+            llama = {}
+        chain = str(llama.get("chain") or "n/a")
         tradingview = f"https://www.tradingview.com/chart/?symbol=BINANCE:{symbol}.P"
         cards.append(
             f"""
@@ -216,8 +318,13 @@ def render_cards(reports: list[dict[str, object]]) -> str:
           <div><span>Change</span><strong>{float(r["change"]):+.2f}%</strong></div>
           <div><span>Vol ratio</span><strong>{float(r["volumeRatio"]):.2f}x</strong></div>
           <div><span>Near high/low</span><strong>{float(r["distanceHigh"]):+.2f}% / {float(r["distanceLow"]):+.2f}%</strong></div>
+          <div><span>DeFiLlama chain</span><strong>{escape(chain)}</strong></div>
+          <div><span>Chain TVL</span><strong>{fmt_money(llama.get("chainTvl"))}</strong></div>
+          <div><span>Stablecoins</span><strong>{fmt_money(llama.get("stablecoins"))}</strong></div>
+          <div><span>DEX 24h</span><strong>{fmt_money(llama.get("dexVolume24h"))} <small>{fmt_pct(llama.get("dexChange1d"))}</small></strong></div>
+          <div><span>Fees 24h</span><strong>{fmt_money(llama.get("fees24h"))} <small>{fmt_pct(llama.get("feesChange1d"))}</small></strong></div>
         </section>
-        <p class="summary">Lecture : contexte {escape(bias)} sur {escape(timeframe)}. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+        <p class="summary">Lecture : contexte {escape(bias)} sur {escape(timeframe)}. DeFiLlama ajoute le contexte TVL/stablecoins/DEX/fees quand disponible. Ceci est une watchlist, pas un signal automatique.</p>
       </article>
       """
         )
@@ -272,7 +379,7 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
 </head>
 <body>
   <h1>LibertyVIP Crypto Watchlist</h1>
-  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur les chandelles publiques Binance. Modes suggérés : Swing = 1D/4H/1H, Intraday = 4H/1H/15m, Active = 1H/15m. DeFiLlama pourra être ajouté ensuite pour TVL, fees, volumes DEX et contexte DeFi.</p>
+  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur les chandelles publiques Binance + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Modes suggérés : Swing = 1D/4H/1H, Intraday = 4H/1H/15m, Active = 1H/15m.</p>
   <nav class="toolbar"><span>Mode</span>{''.join(mode_buttons)}</nav>
   <nav class="toolbar"><span>Timeframe</span>{''.join(timeframe_buttons)}</nav>
   <main class="cards">{render_cards(reports)}</main>
