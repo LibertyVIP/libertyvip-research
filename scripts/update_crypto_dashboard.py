@@ -82,6 +82,141 @@ def ema(values: list[float], period: int) -> float:
     return current
 
 
+def sma(values: list[float], period: int) -> float:
+    if not values:
+        return 0.0
+    window = values[-period:] if len(values) >= period else values
+    return statistics.mean(window)
+
+
+def rsi_series(values: list[float], period: int = 14) -> list[float | None]:
+    if len(values) <= period:
+        return [None] * len(values)
+
+    rsis: list[float | None] = [None] * period
+    gains: list[float] = []
+    losses: list[float] = []
+    for i in range(1, period + 1):
+        change = values[i] - values[i - 1]
+        gains.append(max(change, 0))
+        losses.append(abs(min(change, 0)))
+
+    avg_gain = statistics.mean(gains)
+    avg_loss = statistics.mean(losses)
+    rsis.append(100.0 if avg_loss == 0 else 100 - (100 / (1 + avg_gain / avg_loss)))
+
+    for i in range(period + 1, len(values)):
+        change = values[i] - values[i - 1]
+        gain = max(change, 0)
+        loss = abs(min(change, 0))
+        avg_gain = ((avg_gain * (period - 1)) + gain) / period
+        avg_loss = ((avg_loss * (period - 1)) + loss) / period
+        rsis.append(100.0 if avg_loss == 0 else 100 - (100 / (1 + avg_gain / avg_loss)))
+
+    return rsis
+
+
+def detect_rsi_confirmation(closes: list[float]) -> dict[str, object]:
+    rsis = rsi_series(closes, 14)
+    valid = [value for value in rsis if value is not None]
+    if len(valid) < 23:
+        return {
+            "rsi": None,
+            "rsiSlow": None,
+            "rsiCross": "n/a",
+            "zookeeper": "n/a",
+            "zookeeperDirection": "neutral",
+        }
+
+    slow_series: list[float | None] = []
+    for i, value in enumerate(rsis):
+        if value is None:
+            slow_series.append(None)
+            continue
+        valid_window = [v for v in rsis[: i + 1] if v is not None]
+        slow_series.append(sma(valid_window, 21) if len(valid_window) >= 21 else None)
+
+    last_rsi = rsis[-1]
+    prev_rsi = rsis[-2]
+    last_slow = slow_series[-1]
+    prev_slow = slow_series[-2]
+    if None in (last_rsi, prev_rsi, last_slow, prev_slow):
+        cross = "n/a"
+    elif prev_rsi <= prev_slow and last_rsi > last_slow:
+        cross = "bullish cross"
+    elif prev_rsi >= prev_slow and last_rsi < last_slow:
+        cross = "bearish cross"
+    else:
+        cross = "no cross"
+
+    recent_rsis = [v for v in rsis[-8:] if v is not None]
+    recent_low = min(recent_rsis) if recent_rsis else float(last_rsi or 50)
+    recent_high = max(recent_rsis) if recent_rsis else float(last_rsi or 50)
+    zookeeper = "waiting"
+    direction = "neutral"
+    if cross == "bullish cross" and recent_low <= 35:
+        zookeeper = "bullish impulse setup"
+        direction = "bullish"
+    elif cross == "bearish cross" and recent_high >= 65:
+        zookeeper = "bearish impulse setup"
+        direction = "bearish"
+    elif recent_low <= 30:
+        zookeeper = "oversold armed"
+        direction = "bullish"
+    elif recent_high >= 70:
+        zookeeper = "overbought armed"
+        direction = "bearish"
+
+    return {
+        "rsi": round(float(last_rsi), 2),
+        "rsiSlow": round(float(last_slow), 2),
+        "rsiCross": cross,
+        "zookeeper": zookeeper,
+        "zookeeperDirection": direction,
+    }
+
+
+def detect_mss(candles: list[dict[str, float]], pivot: int = 3, lookback: int = 90) -> dict[str, object]:
+    highs = [c["high"] for c in candles]
+    lows = [c["low"] for c in candles]
+    closes = [c["close"] for c in candles]
+    pivot_highs: list[tuple[int, float]] = []
+    pivot_lows: list[tuple[int, float]] = []
+
+    start = max(pivot, len(candles) - lookback)
+    for i in range(start, len(candles) - pivot):
+        high_window = highs[i - pivot : i + pivot + 1]
+        low_window = lows[i - pivot : i + pivot + 1]
+        if highs[i] == max(high_window):
+            pivot_highs.append((i, highs[i]))
+        if lows[i] == min(low_window):
+            pivot_lows.append((i, lows[i]))
+
+    events: list[tuple[int, str, float]] = []
+    for i in range(1, len(candles)):
+        previous_highs = [p for p in pivot_highs if p[0] < i]
+        previous_lows = [p for p in pivot_lows if p[0] < i]
+        if previous_highs:
+            swing_index, swing_high = previous_highs[-1]
+            if closes[i - 1] <= swing_high and closes[i] > swing_high:
+                events.append((i, "bullish MSS", swing_high))
+        if previous_lows:
+            swing_index, swing_low = previous_lows[-1]
+            if closes[i - 1] >= swing_low and closes[i] < swing_low:
+                events.append((i, "bearish MSS", swing_low))
+
+    if not events:
+        return {"mss": "none", "mssDirection": "neutral", "mssAgeBars": None, "mssLevel": None}
+
+    index, kind, level = events[-1]
+    return {
+        "mss": kind,
+        "mssDirection": "bullish" if kind.startswith("bullish") else "bearish",
+        "mssAgeBars": len(candles) - 1 - index,
+        "mssLevel": level,
+    }
+
+
 def pct(current: float, previous: float) -> float:
     if previous == 0:
         return 0.0
@@ -105,6 +240,8 @@ def detect_structure(candles: list[dict[str, float]]) -> dict[str, object]:
     recent_low = min(lows[-30:])
     distance_high = pct(last_close, recent_high)
     distance_low = pct(last_close, recent_low)
+    rsi_confirmation = detect_rsi_confirmation(closes)
+    mss_confirmation = detect_mss(candles)
 
     bullish_score = 0
     bearish_score = 0
@@ -150,6 +287,17 @@ def detect_structure(candles: list[dict[str, float]]) -> dict[str, object]:
         score += 6
     if compression:
         score += 6
+    if rsi_confirmation["zookeeperDirection"] == bias:
+        score += 10
+    elif rsi_confirmation["zookeeperDirection"] not in ("neutral", bias):
+        score -= 6
+    if rsi_confirmation["rsiCross"].startswith(str(bias)):
+        score += 6
+    if mss_confirmation["mssDirection"] == bias:
+        age = mss_confirmation.get("mssAgeBars")
+        score += 8 if isinstance(age, int) and age <= 20 else 4
+    elif mss_confirmation["mssDirection"] not in ("neutral", bias):
+        score -= 6
     score = max(0, min(100, score))
 
     return {
@@ -167,6 +315,8 @@ def detect_structure(candles: list[dict[str, float]]) -> dict[str, object]:
         "setup": setup,
         "score": round(score),
         "lastCandleTime": int(last["time"]),
+        **rsi_confirmation,
+        **mss_confirmation,
     }
 
 
@@ -203,6 +353,12 @@ def fmt_pct(value: object) -> str:
     if not isinstance(value, (int, float)) or not math.isfinite(float(value)):
         return "n/a"
     return f"{float(value):+.2f}%"
+
+
+def fmt_number(value: object, decimals: int = 2) -> str:
+    if not isinstance(value, (int, float)) or not math.isfinite(float(value)):
+        return "n/a"
+    return f"{float(value):.{decimals}f}"
 
 
 def numeric(value: object) -> float | None:
@@ -316,6 +472,10 @@ def render_cards(reports: list[dict[str, object]]) -> str:
           <div><span>Bias</span><strong>{escape(bias)}</strong></div>
           <div><span>Setup</span><strong>{escape(str(r["setup"]))}</strong></div>
           <div><span>Change</span><strong>{float(r["change"]):+.2f}%</strong></div>
+          <div><span>RSI / slow</span><strong>{fmt_number(r.get("rsi"))} / {fmt_number(r.get("rsiSlow"))}</strong></div>
+          <div><span>RSI cross</span><strong>{escape(str(r.get("rsiCross", "n/a")))}</strong></div>
+          <div><span>Zookeeper</span><strong>{escape(str(r.get("zookeeper", "n/a")))}</strong></div>
+          <div><span>MSS</span><strong>{escape(str(r.get("mss", "none")))} <small>{str(r.get("mssAgeBars")) + " bars" if isinstance(r.get("mssAgeBars"), int) else ""}</small></strong></div>
           <div><span>Vol ratio</span><strong>{float(r["volumeRatio"]):.2f}x</strong></div>
           <div><span>Near high/low</span><strong>{float(r["distanceHigh"]):+.2f}% / {float(r["distanceLow"]):+.2f}%</strong></div>
           <div><span>DeFiLlama chain</span><strong>{escape(chain)}</strong></div>
@@ -324,7 +484,7 @@ def render_cards(reports: list[dict[str, object]]) -> str:
           <div><span>DEX 24h</span><strong>{fmt_money(llama.get("dexVolume24h"))} <small>{fmt_pct(llama.get("dexChange1d"))}</small></strong></div>
           <div><span>Fees 24h</span><strong>{fmt_money(llama.get("fees24h"))} <small>{fmt_pct(llama.get("feesChange1d"))}</small></strong></div>
         </section>
-        <p class="summary">Lecture : contexte {escape(bias)} sur {escape(timeframe)}. DeFiLlama ajoute le contexte TVL/stablecoins/DEX/fees quand disponible. Ceci est une watchlist, pas un signal automatique.</p>
+        <p class="summary">Lecture : contexte {escape(bias)} sur {escape(timeframe)}. Le RSI/Zookeeper et le MSS servent de confirmations de momentum/structure; DeFiLlama ajoute le contexte fondamental on-chain quand disponible. Ceci est une watchlist, pas un signal automatique.</p>
       </article>
       """
         )
