@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LibertyVIP Crypto Watchlist</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, Segoe UI, Arial, sans-serif; background:#070a10; color:#eef3ff; }
+    body { margin:0; padding:28px; background:radial-gradient(circle at top left,#13213d,#070a10 42%); }
+    h1 { margin:0; font-size:34px; letter-spacing:-.04em; }
+    .sub { color:#93a4c7; line-height:1.45; max-width:1120px; }
+    a { color:#9cc5ff; text-decoration:none; }
+    .toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:18px 0 22px; }
+    .toolbar span { color:#93a4c7; font-size:14px; }
+    button { border:1px solid #2b3b63; background:rgba(255,255,255,.045); color:#dce7ff; border-radius:999px; padding:9px 14px; font-weight:800; cursor:pointer; }
+    button.active { background:linear-gradient(135deg,#145dd8,#22c18a); border-color:transparent; color:white; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:18px; }
+    .card { border:1px solid #22304f; border-radius:22px; padding:20px; background:rgba(11,17,30,.84); box-shadow:0 20px 70px rgba(0,0,0,.28); }
+    .card.hidden { display:none; }
+    .card header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+    h2 { margin:0; font-size:26px; }
+    header p { margin:4px 0 0; color:#8798bd; }
+    .score { min-width:86px; height:86px; border-radius:20px; display:grid; place-items:center; font-size:30px; font-weight:900; background:#151d31; border:1px solid #2b3b63; }
+    .score small { font-size:13px; color:#9aa9c7; margin-left:2px; }
+    .score span { display:block; font-size:13px; color:#dce7ff; }
+    .bullish .score { background:linear-gradient(135deg,#0d6b4f,#23c18a); }
+    .bearish .score { background:linear-gradient(135deg,#7c2536,#d34d5f); }
+    .neutral .score { background:linear-gradient(135deg,#28334d,#53617f); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .grid div { border:1px solid #22304f; border-radius:14px; padding:12px; background:rgba(255,255,255,.035); }
+    .grid span { display:block; color:#8494b6; font-size:12px; margin-bottom:6px; }
+    .grid strong { font-size:15px; }
+    .summary { color:#d5e0f8; line-height:1.45; }
+    .note { color:#8494b6; margin-top:24px; font-size:13px; }
+  </style>
+</head>
+<body>
+  <h1>LibertyVIP Crypto Watchlist</h1>
+  <p class="sub">Généré le 2026-07-13 15:23:31 UTC. Watchlist gratuite basée sur les chandelles publiques Binance. Modes suggérés : Swing = 1D/4H/1H, Intraday = 4H/1H/15m, Active = 1H/15m. DeFiLlama pourra être ajouté ensuite pour TVL, fees, volumes DEX et contexte DeFi.</p>
+  <nav class="toolbar"><span>Mode</span><button class="mode-button" data-frames="1d,4h,1h">Swing</button><button class="mode-button" data-frames="4h,1h,15m">Intraday</button><button class="mode-button" data-frames="1h,15m">Active</button></nav>
+  <nav class="toolbar"><span>Timeframe</span><button class="tf-button" data-timeframe="15m">15m</button><button class="tf-button" data-timeframe="1h">1h</button><button class="tf-button" data-timeframe="4h">4h</button><button class="tf-button" data-timeframe="1d">1d</button></nav>
+  <main class="cards">
+      <article class="card bearish" data-timeframe="15m" data-symbol="BTCUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT.P" target="_blank" rel="noopener">BTCUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>62,829.30</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-0.41%</strong></div>
+          <div><span>Vol ratio</span><strong>0.86x</strong></div>
+          <div><span>Near high/low</span><strong>-0.68% / +1.24%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1h" data-symbol="BTCUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT.P" target="_blank" rel="noopener">BTCUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>62,832.90</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-2.05%</strong></div>
+          <div><span>Vol ratio</span><strong>0.82x</strong></div>
+          <div><span>Near high/low</span><strong>-2.45% / +1.24%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card neutral" data-timeframe="4h" data-symbol="BTCUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT.P" target="_blank" rel="noopener">BTCUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">62<small>/100</small><span>BUILDING</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>62,831.80</strong></div>
+          <div><span>Bias</span><strong>neutral</strong></div>
+          <div><span>Setup</span><strong>range</strong></div>
+          <div><span>Change</span><strong>-0.01%</strong></div>
+          <div><span>Vol ratio</span><strong>2.45x</strong></div>
+          <div><span>Near high/low</span><strong>-2.86% / +1.89%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte neutral sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1d" data-symbol="BTCUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT.P" target="_blank" rel="noopener">BTCUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">18<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>62,831.90</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-1.07%</strong></div>
+          <div><span>Vol ratio</span><strong>0.91x</strong></div>
+          <div><span>Near high/low</span><strong>-6.58% / +8.78%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="15m" data-symbol="ETHUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ETHUSDT.P" target="_blank" rel="noopener">ETHUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1,783.72</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-0.16%</strong></div>
+          <div><span>Vol ratio</span><strong>0.55x</strong></div>
+          <div><span>Near high/low</span><strong>-0.49% / +1.25%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1h" data-symbol="ETHUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ETHUSDT.P" target="_blank" rel="noopener">ETHUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1,783.72</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-1.99%</strong></div>
+          <div><span>Vol ratio</span><strong>0.36x</strong></div>
+          <div><span>Near high/low</span><strong>-3.48% / +1.25%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bullish" data-timeframe="4h" data-symbol="ETHUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ETHUSDT.P" target="_blank" rel="noopener">ETHUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">78<small>/100</small><span>WATCH</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1,783.72</strong></div>
+          <div><span>Bias</span><strong>bullish</strong></div>
+          <div><span>Setup</span><strong>uptrend</strong></div>
+          <div><span>Change</span><strong>+2.59%</strong></div>
+          <div><span>Vol ratio</span><strong>1.85x</strong></div>
+          <div><span>Near high/low</span><strong>-3.48% / +3.67%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bullish sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card neutral" data-timeframe="1d" data-symbol="ETHUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ETHUSDT.P" target="_blank" rel="noopener">ETHUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">56<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1,783.72</strong></div>
+          <div><span>Bias</span><strong>neutral</strong></div>
+          <div><span>Setup</span><strong>range</strong></div>
+          <div><span>Change</span><strong>+4.29%</strong></div>
+          <div><span>Vol ratio</span><strong>0.88x</strong></div>
+          <div><span>Near high/low</span><strong>-3.52% / +18.06%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte neutral sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="15m" data-symbol="SOLUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SOLUSDT.P" target="_blank" rel="noopener">SOLUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>76.1600</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-0.61%</strong></div>
+          <div><span>Vol ratio</span><strong>0.61x</strong></div>
+          <div><span>Near high/low</span><strong>-0.91% / +1.47%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1h" data-symbol="SOLUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SOLUSDT.P" target="_blank" rel="noopener">SOLUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">24<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>76.1700</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-1.64%</strong></div>
+          <div><span>Vol ratio</span><strong>0.53x</strong></div>
+          <div><span>Near high/low</span><strong>-2.58% / +1.48%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="4h" data-symbol="SOLUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SOLUSDT.P" target="_blank" rel="noopener">SOLUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">46<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>76.1600</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-1.82%</strong></div>
+          <div><span>Vol ratio</span><strong>1.82x</strong></div>
+          <div><span>Near high/low</span><strong>-4.37% / +1.47%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card neutral" data-timeframe="1d" data-symbol="SOLUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SOLUSDT.P" target="_blank" rel="noopener">SOLUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">50<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>76.1700</strong></div>
+          <div><span>Bias</span><strong>neutral</strong></div>
+          <div><span>Setup</span><strong>range</strong></div>
+          <div><span>Change</span><strong>+9.30%</strong></div>
+          <div><span>Vol ratio</span><strong>0.58x</strong></div>
+          <div><span>Near high/low</span><strong>-9.28% / +19.02%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte neutral sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="15m" data-symbol="ZECUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ZECUSDT.P" target="_blank" rel="noopener">ZECUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">24<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>511.30</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-1.04%</strong></div>
+          <div><span>Vol ratio</span><strong>0.60x</strong></div>
+          <div><span>Near high/low</span><strong>-2.20% / +1.95%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card neutral" data-timeframe="1h" data-symbol="ZECUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ZECUSDT.P" target="_blank" rel="noopener">ZECUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">56<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>511.20</strong></div>
+          <div><span>Bias</span><strong>neutral</strong></div>
+          <div><span>Setup</span><strong>range</strong></div>
+          <div><span>Change</span><strong>-3.76%</strong></div>
+          <div><span>Vol ratio</span><strong>0.43x</strong></div>
+          <div><span>Near high/low</span><strong>-7.00% / +1.93%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte neutral sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bullish" data-timeframe="4h" data-symbol="ZECUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ZECUSDT.P" target="_blank" rel="noopener">ZECUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">88<small>/100</small><span>WATCH</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>511.28</strong></div>
+          <div><span>Bias</span><strong>bullish</strong></div>
+          <div><span>Setup</span><strong>uptrend</strong></div>
+          <div><span>Change</span><strong>+9.74%</strong></div>
+          <div><span>Vol ratio</span><strong>1.38x</strong></div>
+          <div><span>Near high/low</span><strong>-6.98% / +12.66%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bullish sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bullish" data-timeframe="1d" data-symbol="ZECUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ZECUSDT.P" target="_blank" rel="noopener">ZECUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">82<small>/100</small><span>WATCH</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>511.28</strong></div>
+          <div><span>Bias</span><strong>bullish</strong></div>
+          <div><span>Setup</span><strong>uptrend</strong></div>
+          <div><span>Change</span><strong>+7.34%</strong></div>
+          <div><span>Vol ratio</span><strong>0.69x</strong></div>
+          <div><span>Near high/low</span><strong>-6.98% / +39.02%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bullish sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card neutral" data-timeframe="15m" data-symbol="SUIUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SUIUSDT.P" target="_blank" rel="noopener">SUIUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">48<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>0.732700</strong></div>
+          <div><span>Bias</span><strong>neutral</strong></div>
+          <div><span>Setup</span><strong>range</strong></div>
+          <div><span>Change</span><strong>+0.00%</strong></div>
+          <div><span>Vol ratio</span><strong>1.06x</strong></div>
+          <div><span>Near high/low</span><strong>-0.46% / +1.47%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte neutral sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1h" data-symbol="SUIUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SUIUSDT.P" target="_blank" rel="noopener">SUIUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>0.732700</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-1.60%</strong></div>
+          <div><span>Vol ratio</span><strong>0.59x</strong></div>
+          <div><span>Near high/low</span><strong>-2.10% / +1.54%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bullish" data-timeframe="4h" data-symbol="SUIUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SUIUSDT.P" target="_blank" rel="noopener">SUIUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">72<small>/100</small><span>BUILDING</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>0.732800</strong></div>
+          <div><span>Bias</span><strong>bullish</strong></div>
+          <div><span>Setup</span><strong>uptrend</strong></div>
+          <div><span>Change</span><strong>+2.25%</strong></div>
+          <div><span>Vol ratio</span><strong>1.07x</strong></div>
+          <div><span>Near high/low</span><strong>-2.89% / +4.96%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bullish sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1d" data-symbol="SUIUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SUIUSDT.P" target="_blank" rel="noopener">SUIUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">34<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>0.732700</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>+2.29%</strong></div>
+          <div><span>Vol ratio</span><strong>0.51x</strong></div>
+          <div><span>Near high/low</span><strong>-11.55% / +12.67%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="15m" data-symbol="XRPUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XRPUSDT.P" target="_blank" rel="noopener">XRPUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1.0789</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-0.03%</strong></div>
+          <div><span>Vol ratio</span><strong>0.57x</strong></div>
+          <div><span>Near high/low</span><strong>-0.35% / +1.32%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1h" data-symbol="XRPUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XRPUSDT.P" target="_blank" rel="noopener">XRPUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">24<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1.0789</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-2.03%</strong></div>
+          <div><span>Vol ratio</span><strong>0.45x</strong></div>
+          <div><span>Near high/low</span><strong>-2.25% / +1.32%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="4h" data-symbol="XRPUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XRPUSDT.P" target="_blank" rel="noopener">XRPUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">30<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1.0789</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-0.98%</strong></div>
+          <div><span>Vol ratio</span><strong>1.64x</strong></div>
+          <div><span>Near high/low</span><strong>-3.57% / +1.32%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1d" data-symbol="XRPUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XRPUSDT.P" target="_blank" rel="noopener">XRPUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">18<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>1.0789</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-4.95%</strong></div>
+          <div><span>Vol ratio</span><strong>0.67x</strong></div>
+          <div><span>Near high/low</span><strong>-16.56% / +7.02%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card neutral" data-timeframe="15m" data-symbol="BNBUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BNBUSDT.P" target="_blank" rel="noopener">BNBUSDT</a></h2>
+            <p>15m · 2026-07-13 15:15 UTC</p>
+          </div>
+          <div class="score">56<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>570.60</strong></div>
+          <div><span>Bias</span><strong>neutral</strong></div>
+          <div><span>Setup</span><strong>range</strong></div>
+          <div><span>Change</span><strong>+0.14%</strong></div>
+          <div><span>Vol ratio</span><strong>0.50x</strong></div>
+          <div><span>Near high/low</span><strong>-0.27% / +0.86%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte neutral sur 15m. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1h" data-symbol="BNBUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BNBUSDT.P" target="_blank" rel="noopener">BNBUSDT</a></h2>
+            <p>1h · 2026-07-13 15:00 UTC</p>
+          </div>
+          <div class="score">24<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>570.67</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-1.86%</strong></div>
+          <div><span>Vol ratio</span><strong>0.38x</strong></div>
+          <div><span>Near high/low</span><strong>-2.46% / +0.87%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="4h" data-symbol="BNBUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BNBUSDT.P" target="_blank" rel="noopener">BNBUSDT</a></h2>
+            <p>4h · 2026-07-13 12:00 UTC</p>
+          </div>
+          <div class="score">40<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>570.67</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-0.13%</strong></div>
+          <div><span>Vol ratio</span><strong>1.09x</strong></div>
+          <div><span>Near high/low</span><strong>-2.46% / +1.55%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 4h. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      
+
+      <article class="card bearish" data-timeframe="1d" data-symbol="BNBUSDT">
+        <header>
+          <div>
+            <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BNBUSDT.P" target="_blank" rel="noopener">BNBUSDT</a></h2>
+            <p>1d · 2026-07-13 00:00 UTC</p>
+          </div>
+          <div class="score">18<small>/100</small><span>WAIT</span></div>
+        </header>
+        <section class="grid">
+          <div><span>Price</span><strong>570.67</strong></div>
+          <div><span>Bias</span><strong>bearish</strong></div>
+          <div><span>Setup</span><strong>downtrend</strong></div>
+          <div><span>Change</span><strong>-1.88%</strong></div>
+          <div><span>Vol ratio</span><strong>0.55x</strong></div>
+          <div><span>Near high/low</span><strong>-9.87% / +6.21%</strong></div>
+        </section>
+        <p class="summary">Lecture : contexte bearish sur 1d. Chercher confirmation multi-timeframe avant d'entrer. Ceci est une watchlist, pas un signal automatique.</p>
+      </article>
+      </main>
+  <p class="note">Éducatif seulement. Pas un conseil financier personnalisé. Les cryptos sont volatiles : confirmer le contexte, le risque et le plan avant toute entrée.</p>
+  <script>
+    const defaultMode = "intraday";
+    const modeButtons = [...document.querySelectorAll(".mode-button")];
+    const tfButtons = [...document.querySelectorAll(".tf-button")];
+    const cards = [...document.querySelectorAll(".card")];
+    let activeFrames = new Set();
+    let activeTf = "";
+    function refresh() {
+      cards.forEach(card => {
+        const tf = card.dataset.timeframe;
+        card.classList.toggle("hidden", activeTf ? tf !== activeTf : !activeFrames.has(tf));
+      });
+    }
+    function selectMode(button) {
+      modeButtons.forEach(b => b.classList.toggle("active", b === button));
+      tfButtons.forEach(b => b.classList.remove("active"));
+      activeTf = "";
+      activeFrames = new Set(button.dataset.frames.split(","));
+      localStorage.setItem("liberty-crypto-mode", button.textContent.toLowerCase());
+      refresh();
+    }
+    function selectTf(button) {
+      tfButtons.forEach(b => b.classList.toggle("active", b === button));
+      modeButtons.forEach(b => b.classList.remove("active"));
+      activeTf = button.dataset.timeframe;
+      refresh();
+    }
+    modeButtons.forEach(button => button.addEventListener("click", () => selectMode(button)));
+    tfButtons.forEach(button => button.addEventListener("click", () => selectTf(button)));
+    const saved = localStorage.getItem("liberty-crypto-mode") || defaultMode;
+    selectMode(modeButtons.find(b => b.textContent.toLowerCase() === saved) || modeButtons[0]);
+  </script>
+</body>
+</html>
