@@ -12,6 +12,7 @@
     a { color:#9cc5ff; text-decoration:none; }
     .toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:18px 0 22px; }
     .toolbar span { color:#93a4c7; font-size:14px; }
+    .toolbar .hint { color:#7082a8; font-size:13px; }
     button { border:1px solid #2b3b63; background:rgba(255,255,255,.045); color:#dce7ff; border-radius:999px; padding:9px 14px; font-weight:800; cursor:pointer; }
     button.active { background:linear-gradient(135deg,#145dd8,#22c18a); border-color:transparent; color:white; }
     .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:18px; }
@@ -36,27 +37,27 @@
 </head>
 <body>
   <h1>LibertyVIP Crypto Watchlist</h1>
-  <p class="sub">Généré le 2026-07-13 15:40:11 UTC. Watchlist gratuite basée sur les chandelles publiques Binance + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Modes suggérés : Swing = 1D/4H/1H, Intraday = 4H/1H/15m, Active = 1H/15m.</p>
-  <nav class="toolbar"><span>Mode</span><button class="mode-button" data-frames="1d,4h,1h">Swing</button><button class="mode-button" data-frames="4h,1h,15m">Intraday</button><button class="mode-button" data-frames="1h,15m">Active</button></nav>
+  <p class="sub">Généré le 2026-07-13 15:58:31 UTC. Watchlist gratuite basée sur les chandelles publiques Binance + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Pour éviter les doublons, le dashboard affiche une seule carte par actif selon la timeframe sélectionnée.</p>
+  <nav class="toolbar"><span>Mode</span><button class="mode-button" data-frames="1d,4h,1h" data-primary="1d">Swing</button><button class="mode-button" data-frames="4h,1h,15m" data-primary="4h">Intraday</button><button class="mode-button" data-frames="1h,15m" data-primary="1h">Active</button><span class="hint">Swing ouvre 1D · Intraday ouvre 4H · Active ouvre 1H</span></nav>
   <nav class="toolbar"><span>Timeframe</span><button class="tf-button" data-timeframe="15m">15m</button><button class="tf-button" data-timeframe="1h">1h</button><button class="tf-button" data-timeframe="4h">4h</button><button class="tf-button" data-timeframe="1d">1d</button></nav>
   <main class="cards">
       <article class="card bearish" data-timeframe="15m" data-symbol="BTCUSDT">
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT.P" target="_blank" rel="noopener">BTCUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>62,642.80</strong></div>
+          <div><span>Price</span><strong>62,562.20</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-0.69%</strong></div>
-          <div><span>Vol ratio</span><strong>0.52x</strong></div>
-          <div><span>Near high/low</span><strong>-0.98% / +0.94%</strong></div>
+          <div><span>Change</span><strong>-0.81%</strong></div>
+          <div><span>Vol ratio</span><strong>0.53x</strong></div>
+          <div><span>Near high/low</span><strong>-1.10% / +0.81%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Bitcoin</strong></div>
-          <div><span>Chain TVL</span><strong>$3.43B</strong></div>
+          <div><span>Chain TVL</span><strong>$3.44B</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
           <div><span>DEX 24h</span><strong>$247.95K <small>+2.93%</small></strong></div>
           <div><span>Fees 24h</span><strong>$8.26K <small>+3.17%</small></strong></div>
@@ -71,17 +72,17 @@
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BTCUSDT.P" target="_blank" rel="noopener">BTCUSDT</a></h2>
             <p>1h · 2026-07-13 15:00 UTC</p>
           </div>
-          <div class="score">40<small>/100</small><span>WAIT</span></div>
+          <div class="score">46<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>62,653.80</strong></div>
+          <div><span>Price</span><strong>62,562.20</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.33%</strong></div>
-          <div><span>Vol ratio</span><strong>1.13x</strong></div>
-          <div><span>Near high/low</span><strong>-2.73% / +0.95%</strong></div>
+          <div><span>Change</span><strong>-2.47%</strong></div>
+          <div><span>Vol ratio</span><strong>1.49x</strong></div>
+          <div><span>Near high/low</span><strong>-2.87% / +0.81%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Bitcoin</strong></div>
-          <div><span>Chain TVL</span><strong>$3.43B</strong></div>
+          <div><span>Chain TVL</span><strong>$3.44B</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
           <div><span>DEX 24h</span><strong>$247.95K <small>+2.93%</small></strong></div>
           <div><span>Fees 24h</span><strong>$8.26K <small>+3.17%</small></strong></div>
@@ -99,14 +100,14 @@
           <div class="score">62<small>/100</small><span>BUILDING</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>62,653.70</strong></div>
+          <div><span>Price</span><strong>62,562.20</strong></div>
           <div><span>Bias</span><strong>neutral</strong></div>
           <div><span>Setup</span><strong>range</strong></div>
-          <div><span>Change</span><strong>-0.29%</strong></div>
-          <div><span>Vol ratio</span><strong>2.55x</strong></div>
-          <div><span>Near high/low</span><strong>-3.13% / +1.60%</strong></div>
+          <div><span>Change</span><strong>-0.43%</strong></div>
+          <div><span>Vol ratio</span><strong>2.65x</strong></div>
+          <div><span>Near high/low</span><strong>-3.27% / +1.45%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Bitcoin</strong></div>
-          <div><span>Chain TVL</span><strong>$3.43B</strong></div>
+          <div><span>Chain TVL</span><strong>$3.44B</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
           <div><span>DEX 24h</span><strong>$247.95K <small>+2.93%</small></strong></div>
           <div><span>Fees 24h</span><strong>$8.26K <small>+3.17%</small></strong></div>
@@ -124,14 +125,14 @@
           <div class="score">18<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>62,653.70</strong></div>
+          <div><span>Price</span><strong>62,562.20</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>-1.35%</strong></div>
-          <div><span>Vol ratio</span><strong>0.93x</strong></div>
-          <div><span>Near high/low</span><strong>-6.84% / +8.48%</strong></div>
+          <div><span>Change</span><strong>-1.50%</strong></div>
+          <div><span>Vol ratio</span><strong>0.94x</strong></div>
+          <div><span>Near high/low</span><strong>-6.98% / +8.32%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Bitcoin</strong></div>
-          <div><span>Chain TVL</span><strong>$3.43B</strong></div>
+          <div><span>Chain TVL</span><strong>$3.44B</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
           <div><span>DEX 24h</span><strong>$247.95K <small>+2.93%</small></strong></div>
           <div><span>Fees 24h</span><strong>$8.26K <small>+3.17%</small></strong></div>
@@ -144,17 +145,17 @@
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ETHUSDT.P" target="_blank" rel="noopener">ETHUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
-          <div class="score">40<small>/100</small><span>WAIT</span></div>
+          <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1,778.85</strong></div>
+          <div><span>Price</span><strong>1,775.37</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
-          <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>-0.39%</strong></div>
-          <div><span>Vol ratio</span><strong>0.52x</strong></div>
-          <div><span>Near high/low</span><strong>-0.76% / +0.98%</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-0.53%</strong></div>
+          <div><span>Vol ratio</span><strong>0.48x</strong></div>
+          <div><span>Near high/low</span><strong>-0.96% / +0.78%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Ethereum</strong></div>
           <div><span>Chain TVL</span><strong>$39.79B</strong></div>
           <div><span>Stablecoins</span><strong>$151.50B</strong></div>
@@ -174,12 +175,12 @@
           <div class="score">40<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1,778.85</strong></div>
+          <div><span>Price</span><strong>1,775.19</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.26%</strong></div>
-          <div><span>Vol ratio</span><strong>0.63x</strong></div>
-          <div><span>Near high/low</span><strong>-3.74% / +0.98%</strong></div>
+          <div><span>Change</span><strong>-2.46%</strong></div>
+          <div><span>Vol ratio</span><strong>0.87x</strong></div>
+          <div><span>Near high/low</span><strong>-3.94% / +0.77%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Ethereum</strong></div>
           <div><span>Chain TVL</span><strong>$39.79B</strong></div>
           <div><span>Stablecoins</span><strong>$151.50B</strong></div>
@@ -199,12 +200,12 @@
           <div class="score">78<small>/100</small><span>WATCH</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1,778.84</strong></div>
+          <div><span>Price</span><strong>1,775.19</strong></div>
           <div><span>Bias</span><strong>bullish</strong></div>
           <div><span>Setup</span><strong>uptrend</strong></div>
-          <div><span>Change</span><strong>+2.31%</strong></div>
-          <div><span>Vol ratio</span><strong>1.94x</strong></div>
-          <div><span>Near high/low</span><strong>-3.74% / +3.39%</strong></div>
+          <div><span>Change</span><strong>+2.10%</strong></div>
+          <div><span>Vol ratio</span><strong>2.01x</strong></div>
+          <div><span>Near high/low</span><strong>-3.94% / +3.18%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Ethereum</strong></div>
           <div><span>Chain TVL</span><strong>$39.79B</strong></div>
           <div><span>Stablecoins</span><strong>$151.50B</strong></div>
@@ -224,12 +225,12 @@
           <div class="score">56<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1,778.85</strong></div>
+          <div><span>Price</span><strong>1,775.37</strong></div>
           <div><span>Bias</span><strong>neutral</strong></div>
           <div><span>Setup</span><strong>range</strong></div>
-          <div><span>Change</span><strong>+4.01%</strong></div>
-          <div><span>Vol ratio</span><strong>0.89x</strong></div>
-          <div><span>Near high/low</span><strong>-3.78% / +17.74%</strong></div>
+          <div><span>Change</span><strong>+3.80%</strong></div>
+          <div><span>Vol ratio</span><strong>0.90x</strong></div>
+          <div><span>Near high/low</span><strong>-3.97% / +17.51%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Ethereum</strong></div>
           <div><span>Chain TVL</span><strong>$39.79B</strong></div>
           <div><span>Stablecoins</span><strong>$151.50B</strong></div>
@@ -244,17 +245,17 @@
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SOLUSDT.P" target="_blank" rel="noopener">SOLUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>75.8700</strong></div>
+          <div><span>Price</span><strong>75.7700</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-1.03%</strong></div>
-          <div><span>Vol ratio</span><strong>0.45x</strong></div>
-          <div><span>Near high/low</span><strong>-1.29% / +1.08%</strong></div>
+          <div><span>Change</span><strong>-1.06%</strong></div>
+          <div><span>Vol ratio</span><strong>0.49x</strong></div>
+          <div><span>Near high/low</span><strong>-1.42% / +0.95%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Solana</strong></div>
           <div><span>Chain TVL</span><strong>$4.84B</strong></div>
           <div><span>Stablecoins</span><strong>$14.72B</strong></div>
@@ -274,12 +275,12 @@
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>75.8700</strong></div>
+          <div><span>Price</span><strong>75.7700</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.03%</strong></div>
-          <div><span>Vol ratio</span><strong>0.75x</strong></div>
-          <div><span>Near high/low</span><strong>-2.97% / +1.08%</strong></div>
+          <div><span>Change</span><strong>-2.16%</strong></div>
+          <div><span>Vol ratio</span><strong>0.99x</strong></div>
+          <div><span>Near high/low</span><strong>-3.10% / +0.95%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Solana</strong></div>
           <div><span>Chain TVL</span><strong>$4.84B</strong></div>
           <div><span>Stablecoins</span><strong>$14.72B</strong></div>
@@ -299,12 +300,12 @@
           <div class="score">46<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>75.8700</strong></div>
+          <div><span>Price</span><strong>75.7800</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.19%</strong></div>
-          <div><span>Vol ratio</span><strong>1.88x</strong></div>
-          <div><span>Near high/low</span><strong>-4.73% / +1.08%</strong></div>
+          <div><span>Change</span><strong>-2.31%</strong></div>
+          <div><span>Vol ratio</span><strong>1.95x</strong></div>
+          <div><span>Near high/low</span><strong>-4.85% / +0.96%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Solana</strong></div>
           <div><span>Chain TVL</span><strong>$4.84B</strong></div>
           <div><span>Stablecoins</span><strong>$14.72B</strong></div>
@@ -324,12 +325,12 @@
           <div class="score">34<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>75.8700</strong></div>
+          <div><span>Price</span><strong>75.7700</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>+8.87%</strong></div>
+          <div><span>Change</span><strong>+8.72%</strong></div>
           <div><span>Vol ratio</span><strong>0.59x</strong></div>
-          <div><span>Near high/low</span><strong>-9.64% / +18.55%</strong></div>
+          <div><span>Near high/low</span><strong>-9.75% / +18.39%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Solana</strong></div>
           <div><span>Chain TVL</span><strong>$4.84B</strong></div>
           <div><span>Stablecoins</span><strong>$14.72B</strong></div>
@@ -344,17 +345,17 @@
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:ZECUSDT.P" target="_blank" rel="noopener">ZECUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>511.01</strong></div>
+          <div><span>Price</span><strong>508.77</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-1.02%</strong></div>
-          <div><span>Vol ratio</span><strong>0.59x</strong></div>
-          <div><span>Near high/low</span><strong>-2.26% / +1.89%</strong></div>
+          <div><span>Change</span><strong>-1.25%</strong></div>
+          <div><span>Vol ratio</span><strong>0.51x</strong></div>
+          <div><span>Near high/low</span><strong>-2.69% / +1.44%</strong></div>
           <div><span>DeFiLlama chain</span><strong>n/a</strong></div>
           <div><span>Chain TVL</span><strong>n/a</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
@@ -374,12 +375,12 @@
           <div class="score">56<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>511.01</strong></div>
+          <div><span>Price</span><strong>508.79</strong></div>
           <div><span>Bias</span><strong>neutral</strong></div>
           <div><span>Setup</span><strong>range</strong></div>
-          <div><span>Change</span><strong>-3.79%</strong></div>
-          <div><span>Vol ratio</span><strong>0.64x</strong></div>
-          <div><span>Near high/low</span><strong>-7.03% / +1.89%</strong></div>
+          <div><span>Change</span><strong>-4.21%</strong></div>
+          <div><span>Vol ratio</span><strong>0.82x</strong></div>
+          <div><span>Near high/low</span><strong>-7.43% / +1.45%</strong></div>
           <div><span>DeFiLlama chain</span><strong>n/a</strong></div>
           <div><span>Chain TVL</span><strong>n/a</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
@@ -399,12 +400,12 @@
           <div class="score">72<small>/100</small><span>BUILDING</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>510.94</strong></div>
+          <div><span>Price</span><strong>508.79</strong></div>
           <div><span>Bias</span><strong>bullish</strong></div>
           <div><span>Setup</span><strong>uptrend</strong></div>
-          <div><span>Change</span><strong>+9.66%</strong></div>
-          <div><span>Vol ratio</span><strong>1.44x</strong></div>
-          <div><span>Near high/low</span><strong>-7.04% / +12.59%</strong></div>
+          <div><span>Change</span><strong>+9.20%</strong></div>
+          <div><span>Vol ratio</span><strong>1.50x</strong></div>
+          <div><span>Near high/low</span><strong>-7.43% / +12.11%</strong></div>
           <div><span>DeFiLlama chain</span><strong>n/a</strong></div>
           <div><span>Chain TVL</span><strong>n/a</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
@@ -424,12 +425,12 @@
           <div class="score">82<small>/100</small><span>WATCH</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>510.94</strong></div>
+          <div><span>Price</span><strong>508.87</strong></div>
           <div><span>Bias</span><strong>bullish</strong></div>
           <div><span>Setup</span><strong>uptrend</strong></div>
-          <div><span>Change</span><strong>+7.27%</strong></div>
-          <div><span>Vol ratio</span><strong>0.69x</strong></div>
-          <div><span>Near high/low</span><strong>-7.04% / +38.93%</strong></div>
+          <div><span>Change</span><strong>+6.83%</strong></div>
+          <div><span>Vol ratio</span><strong>0.70x</strong></div>
+          <div><span>Near high/low</span><strong>-7.42% / +38.37%</strong></div>
           <div><span>DeFiLlama chain</span><strong>n/a</strong></div>
           <div><span>Chain TVL</span><strong>n/a</strong></div>
           <div><span>Stablecoins</span><strong>n/a</strong></div>
@@ -444,19 +445,19 @@
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SUIUSDT.P" target="_blank" rel="noopener">SUIUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>0.728900</strong></div>
+          <div><span>Price</span><strong>0.727700</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-0.63%</strong></div>
-          <div><span>Vol ratio</span><strong>1.25x</strong></div>
-          <div><span>Near high/low</span><strong>-0.98% / +0.94%</strong></div>
+          <div><span>Change</span><strong>-0.67%</strong></div>
+          <div><span>Vol ratio</span><strong>0.90x</strong></div>
+          <div><span>Near high/low</span><strong>-1.14% / +0.78%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Sui</strong></div>
-          <div><span>Chain TVL</span><strong>$431.49M</strong></div>
+          <div><span>Chain TVL</span><strong>$431.89M</strong></div>
           <div><span>Stablecoins</span><strong>$472.57M</strong></div>
           <div><span>DEX 24h</span><strong>$20.99M <small>-14.94%</small></strong></div>
           <div><span>Fees 24h</span><strong>$77.52K <small>-2.50%</small></strong></div>
@@ -471,17 +472,17 @@
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:SUIUSDT.P" target="_blank" rel="noopener">SUIUSDT</a></h2>
             <p>1h · 2026-07-13 15:00 UTC</p>
           </div>
-          <div class="score">24<small>/100</small><span>WAIT</span></div>
+          <div class="score">30<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>0.729000</strong></div>
+          <div><span>Price</span><strong>0.727800</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.10%</strong></div>
-          <div><span>Vol ratio</span><strong>1.04x</strong></div>
-          <div><span>Near high/low</span><strong>-2.59% / +1.03%</strong></div>
+          <div><span>Change</span><strong>-2.26%</strong></div>
+          <div><span>Vol ratio</span><strong>1.34x</strong></div>
+          <div><span>Near high/low</span><strong>-2.75% / +0.86%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Sui</strong></div>
-          <div><span>Chain TVL</span><strong>$431.49M</strong></div>
+          <div><span>Chain TVL</span><strong>$431.89M</strong></div>
           <div><span>Stablecoins</span><strong>$472.57M</strong></div>
           <div><span>DEX 24h</span><strong>$20.99M <small>-14.94%</small></strong></div>
           <div><span>Fees 24h</span><strong>$77.52K <small>-2.50%</small></strong></div>
@@ -499,14 +500,14 @@
           <div class="score">72<small>/100</small><span>BUILDING</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>0.729000</strong></div>
+          <div><span>Price</span><strong>0.727800</strong></div>
           <div><span>Bias</span><strong>bullish</strong></div>
           <div><span>Setup</span><strong>uptrend</strong></div>
-          <div><span>Change</span><strong>+1.72%</strong></div>
-          <div><span>Vol ratio</span><strong>1.17x</strong></div>
-          <div><span>Near high/low</span><strong>-3.39% / +4.41%</strong></div>
+          <div><span>Change</span><strong>+1.55%</strong></div>
+          <div><span>Vol ratio</span><strong>1.24x</strong></div>
+          <div><span>Near high/low</span><strong>-3.55% / +4.24%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Sui</strong></div>
-          <div><span>Chain TVL</span><strong>$431.49M</strong></div>
+          <div><span>Chain TVL</span><strong>$431.89M</strong></div>
           <div><span>Stablecoins</span><strong>$472.57M</strong></div>
           <div><span>DEX 24h</span><strong>$20.99M <small>-14.94%</small></strong></div>
           <div><span>Fees 24h</span><strong>$77.52K <small>-2.50%</small></strong></div>
@@ -524,14 +525,14 @@
           <div class="score">34<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>0.729000</strong></div>
+          <div><span>Price</span><strong>0.727800</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>+1.77%</strong></div>
-          <div><span>Vol ratio</span><strong>0.52x</strong></div>
-          <div><span>Near high/low</span><strong>-12.00% / +12.10%</strong></div>
+          <div><span>Change</span><strong>+1.61%</strong></div>
+          <div><span>Vol ratio</span><strong>0.53x</strong></div>
+          <div><span>Near high/low</span><strong>-12.14% / +11.92%</strong></div>
           <div><span>DeFiLlama chain</span><strong>Sui</strong></div>
-          <div><span>Chain TVL</span><strong>$431.49M</strong></div>
+          <div><span>Chain TVL</span><strong>$431.89M</strong></div>
           <div><span>Stablecoins</span><strong>$472.57M</strong></div>
           <div><span>DEX 24h</span><strong>$20.99M <small>-14.94%</small></strong></div>
           <div><span>Fees 24h</span><strong>$77.52K <small>-2.50%</small></strong></div>
@@ -544,17 +545,17 @@
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XRPUSDT.P" target="_blank" rel="noopener">XRPUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
-          <div class="score">40<small>/100</small><span>WAIT</span></div>
+          <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1.0747</strong></div>
+          <div><span>Price</span><strong>1.0723</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
-          <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>-0.44%</strong></div>
-          <div><span>Vol ratio</span><strong>0.53x</strong></div>
-          <div><span>Near high/low</span><strong>-0.74% / +0.93%</strong></div>
+          <div><span>Setup</span><strong>bearish consolidation</strong></div>
+          <div><span>Change</span><strong>-0.55%</strong></div>
+          <div><span>Vol ratio</span><strong>0.62x</strong></div>
+          <div><span>Near high/low</span><strong>-0.96% / +0.70%</strong></div>
           <div><span>DeFiLlama chain</span><strong>XRPL</strong></div>
           <div><span>Chain TVL</span><strong>$32.65M</strong></div>
           <div><span>Stablecoins</span><strong>$932.91M</strong></div>
@@ -574,12 +575,12 @@
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1.0747</strong></div>
+          <div><span>Price</span><strong>1.0722</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.42%</strong></div>
-          <div><span>Vol ratio</span><strong>0.69x</strong></div>
-          <div><span>Near high/low</span><strong>-2.63% / +0.93%</strong></div>
+          <div><span>Change</span><strong>-2.64%</strong></div>
+          <div><span>Vol ratio</span><strong>0.96x</strong></div>
+          <div><span>Near high/low</span><strong>-2.85% / +0.69%</strong></div>
           <div><span>DeFiLlama chain</span><strong>XRPL</strong></div>
           <div><span>Chain TVL</span><strong>$32.65M</strong></div>
           <div><span>Stablecoins</span><strong>$932.91M</strong></div>
@@ -599,12 +600,12 @@
           <div class="score">30<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1.0747</strong></div>
+          <div><span>Price</span><strong>1.0722</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-1.37%</strong></div>
-          <div><span>Vol ratio</span><strong>1.70x</strong></div>
-          <div><span>Near high/low</span><strong>-3.94% / +0.93%</strong></div>
+          <div><span>Change</span><strong>-1.60%</strong></div>
+          <div><span>Vol ratio</span><strong>1.78x</strong></div>
+          <div><span>Near high/low</span><strong>-4.17% / +0.69%</strong></div>
           <div><span>DeFiLlama chain</span><strong>XRPL</strong></div>
           <div><span>Chain TVL</span><strong>$32.65M</strong></div>
           <div><span>Stablecoins</span><strong>$932.91M</strong></div>
@@ -624,12 +625,12 @@
           <div class="score">18<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>1.0747</strong></div>
+          <div><span>Price</span><strong>1.0723</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>-5.32%</strong></div>
+          <div><span>Change</span><strong>-5.53%</strong></div>
           <div><span>Vol ratio</span><strong>0.68x</strong></div>
-          <div><span>Near high/low</span><strong>-16.88% / +6.61%</strong></div>
+          <div><span>Near high/low</span><strong>-17.07% / +6.37%</strong></div>
           <div><span>DeFiLlama chain</span><strong>XRPL</strong></div>
           <div><span>Chain TVL</span><strong>$32.65M</strong></div>
           <div><span>Stablecoins</span><strong>$932.91M</strong></div>
@@ -644,17 +645,17 @@
         <header>
           <div>
             <h2><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BNBUSDT.P" target="_blank" rel="noopener">BNBUSDT</a></h2>
-            <p>15m · 2026-07-13 15:30 UTC</p>
+            <p>15m · 2026-07-13 15:45 UTC</p>
           </div>
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>569.12</strong></div>
+          <div><span>Price</span><strong>569.02</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-0.19%</strong></div>
-          <div><span>Vol ratio</span><strong>0.46x</strong></div>
-          <div><span>Near high/low</span><strong>-0.53% / +0.60%</strong></div>
+          <div><span>Change</span><strong>-0.15%</strong></div>
+          <div><span>Vol ratio</span><strong>0.57x</strong></div>
+          <div><span>Near high/low</span><strong>-0.55% / +0.58%</strong></div>
           <div><span>DeFiLlama chain</span><strong>BSC</strong></div>
           <div><span>Chain TVL</span><strong>$4.90B</strong></div>
           <div><span>Stablecoins</span><strong>$13.77B</strong></div>
@@ -674,12 +675,12 @@
           <div class="score">24<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>569.11</strong></div>
+          <div><span>Price</span><strong>569.02</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-2.13%</strong></div>
-          <div><span>Vol ratio</span><strong>0.52x</strong></div>
-          <div><span>Near high/low</span><strong>-2.73% / +0.60%</strong></div>
+          <div><span>Change</span><strong>-2.14%</strong></div>
+          <div><span>Vol ratio</span><strong>0.66x</strong></div>
+          <div><span>Near high/low</span><strong>-2.74% / +0.58%</strong></div>
           <div><span>DeFiLlama chain</span><strong>BSC</strong></div>
           <div><span>Chain TVL</span><strong>$4.90B</strong></div>
           <div><span>Stablecoins</span><strong>$13.77B</strong></div>
@@ -699,12 +700,12 @@
           <div class="score">40<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>569.11</strong></div>
+          <div><span>Price</span><strong>569.02</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>bearish consolidation</strong></div>
-          <div><span>Change</span><strong>-0.40%</strong></div>
-          <div><span>Vol ratio</span><strong>1.13x</strong></div>
-          <div><span>Near high/low</span><strong>-2.73% / +1.27%</strong></div>
+          <div><span>Change</span><strong>-0.42%</strong></div>
+          <div><span>Vol ratio</span><strong>1.17x</strong></div>
+          <div><span>Near high/low</span><strong>-2.74% / +1.26%</strong></div>
           <div><span>DeFiLlama chain</span><strong>BSC</strong></div>
           <div><span>Chain TVL</span><strong>$4.90B</strong></div>
           <div><span>Stablecoins</span><strong>$13.77B</strong></div>
@@ -724,12 +725,12 @@
           <div class="score">18<small>/100</small><span>WAIT</span></div>
         </header>
         <section class="grid">
-          <div><span>Price</span><strong>569.11</strong></div>
+          <div><span>Price</span><strong>569.01</strong></div>
           <div><span>Bias</span><strong>bearish</strong></div>
           <div><span>Setup</span><strong>downtrend</strong></div>
-          <div><span>Change</span><strong>-2.15%</strong></div>
-          <div><span>Vol ratio</span><strong>0.55x</strong></div>
-          <div><span>Near high/low</span><strong>-10.12% / +5.92%</strong></div>
+          <div><span>Change</span><strong>-2.16%</strong></div>
+          <div><span>Vol ratio</span><strong>0.56x</strong></div>
+          <div><span>Near high/low</span><strong>-10.13% / +5.90%</strong></div>
           <div><span>DeFiLlama chain</span><strong>BSC</strong></div>
           <div><span>Chain TVL</span><strong>$4.90B</strong></div>
           <div><span>Stablecoins</span><strong>$13.77B</strong></div>
@@ -745,26 +746,25 @@
     const modeButtons = [...document.querySelectorAll(".mode-button")];
     const tfButtons = [...document.querySelectorAll(".tf-button")];
     const cards = [...document.querySelectorAll(".card")];
-    let activeFrames = new Set();
     let activeTf = "";
     function refresh() {
       cards.forEach(card => {
         const tf = card.dataset.timeframe;
-        card.classList.toggle("hidden", activeTf ? tf !== activeTf : !activeFrames.has(tf));
+        card.classList.toggle("hidden", tf !== activeTf);
       });
     }
     function selectMode(button) {
       modeButtons.forEach(b => b.classList.toggle("active", b === button));
-      tfButtons.forEach(b => b.classList.remove("active"));
-      activeTf = "";
-      activeFrames = new Set(button.dataset.frames.split(","));
+      const primary = button.dataset.primary;
+      const tfButton = tfButtons.find(b => b.dataset.timeframe === primary) || tfButtons[0];
       localStorage.setItem("liberty-crypto-mode", button.textContent.toLowerCase());
-      refresh();
+      selectTf(tfButton, false);
     }
-    function selectTf(button) {
+    function selectTf(button, clearMode = true) {
       tfButtons.forEach(b => b.classList.toggle("active", b === button));
-      modeButtons.forEach(b => b.classList.remove("active"));
+      if (clearMode) modeButtons.forEach(b => b.classList.remove("active"));
       activeTf = button.dataset.timeframe;
+      localStorage.setItem("liberty-crypto-timeframe", activeTf);
       refresh();
     }
     modeButtons.forEach(button => button.addEventListener("click", () => selectMode(button)));

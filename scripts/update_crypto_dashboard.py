@@ -337,7 +337,14 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
     mode_buttons = []
     for name, frames in modes.items():  # type: ignore[union-attr]
         frames_text = ",".join(frames)
-        mode_buttons.append(f'<button class="mode-button" data-frames="{escape(frames_text)}">{escape(str(name).title())}</button>')
+        primary = frames[0] if str(name).lower() == "swing" else frames[0]
+        if str(name).lower() == "intraday" and "4h" in frames:
+            primary = "4h"
+        if str(name).lower() == "active" and "1h" in frames:
+            primary = "1h"
+        mode_buttons.append(
+            f'<button class="mode-button" data-frames="{escape(frames_text)}" data-primary="{escape(str(primary))}">{escape(str(name).title())}</button>'
+        )
     timeframe_buttons = []
     for timeframe in config["timeframes"]:  # type: ignore[index]
         timeframe_buttons.append(f'<button class="tf-button" data-timeframe="{escape(str(timeframe))}">{escape(str(timeframe))}</button>')
@@ -355,6 +362,7 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
     a {{ color:#9cc5ff; text-decoration:none; }}
     .toolbar {{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:18px 0 22px; }}
     .toolbar span {{ color:#93a4c7; font-size:14px; }}
+    .toolbar .hint {{ color:#7082a8; font-size:13px; }}
     button {{ border:1px solid #2b3b63; background:rgba(255,255,255,.045); color:#dce7ff; border-radius:999px; padding:9px 14px; font-weight:800; cursor:pointer; }}
     button.active {{ background:linear-gradient(135deg,#145dd8,#22c18a); border-color:transparent; color:white; }}
     .cards {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:18px; }}
@@ -379,8 +387,8 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
 </head>
 <body>
   <h1>LibertyVIP Crypto Watchlist</h1>
-  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur les chandelles publiques Binance + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Modes suggérés : Swing = 1D/4H/1H, Intraday = 4H/1H/15m, Active = 1H/15m.</p>
-  <nav class="toolbar"><span>Mode</span>{''.join(mode_buttons)}</nav>
+  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur les chandelles publiques Binance + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Pour éviter les doublons, le dashboard affiche une seule carte par actif selon la timeframe sélectionnée.</p>
+  <nav class="toolbar"><span>Mode</span>{''.join(mode_buttons)}<span class="hint">Swing ouvre 1D · Intraday ouvre 4H · Active ouvre 1H</span></nav>
   <nav class="toolbar"><span>Timeframe</span>{''.join(timeframe_buttons)}</nav>
   <main class="cards">{render_cards(reports)}</main>
   <p class="note">Éducatif seulement. Pas un conseil financier personnalisé. Les cryptos sont volatiles : confirmer le contexte, le risque et le plan avant toute entrée.</p>
@@ -389,26 +397,25 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
     const modeButtons = [...document.querySelectorAll(".mode-button")];
     const tfButtons = [...document.querySelectorAll(".tf-button")];
     const cards = [...document.querySelectorAll(".card")];
-    let activeFrames = new Set();
     let activeTf = "";
     function refresh() {{
       cards.forEach(card => {{
         const tf = card.dataset.timeframe;
-        card.classList.toggle("hidden", activeTf ? tf !== activeTf : !activeFrames.has(tf));
+        card.classList.toggle("hidden", tf !== activeTf);
       }});
     }}
     function selectMode(button) {{
       modeButtons.forEach(b => b.classList.toggle("active", b === button));
-      tfButtons.forEach(b => b.classList.remove("active"));
-      activeTf = "";
-      activeFrames = new Set(button.dataset.frames.split(","));
+      const primary = button.dataset.primary;
+      const tfButton = tfButtons.find(b => b.dataset.timeframe === primary) || tfButtons[0];
       localStorage.setItem("liberty-crypto-mode", button.textContent.toLowerCase());
-      refresh();
+      selectTf(tfButton, false);
     }}
-    function selectTf(button) {{
+    function selectTf(button, clearMode = true) {{
       tfButtons.forEach(b => b.classList.toggle("active", b === button));
-      modeButtons.forEach(b => b.classList.remove("active"));
+      if (clearMode) modeButtons.forEach(b => b.classList.remove("active"));
       activeTf = button.dataset.timeframe;
+      localStorage.setItem("liberty-crypto-timeframe", activeTf);
       refresh();
     }}
     modeButtons.forEach(button => button.addEventListener("click", () => selectMode(button)));
