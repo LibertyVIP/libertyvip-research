@@ -431,16 +431,95 @@ def fetch_defillama_context(symbols: list[str]) -> dict[str, dict[str, object]]:
     return context
 
 
+def load_previous_reports() -> dict[tuple[str, str], dict[str, object]]:
+    latest_path = CRYPTO_DIR / "latest.json"
+    if not latest_path.exists():
+        return {}
+    try:
+        payload = json.loads(latest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    reports = payload.get("reports") if isinstance(payload, dict) else None
+    if not isinstance(reports, list):
+        return {}
+    previous: dict[tuple[str, str], dict[str, object]] = {}
+    for report in reports:
+        if not isinstance(report, dict):
+            continue
+        symbol = str(report.get("symbol", "")).upper()
+        timeframe = str(report.get("timeframe", ""))
+        if symbol and timeframe:
+            previous[(symbol, timeframe)] = report
+    return previous
+
+
+def unavailable_report(symbol: str, timeframe: str, error: str, defillama: dict[str, object]) -> dict[str, object]:
+    return {
+        "symbol": symbol,
+        "timeframe": timeframe,
+        "price": 0,
+        "ema20": 0,
+        "ema50": 0,
+        "ema200": 0,
+        "change": 0,
+        "volumeRatio": 0,
+        "recentHigh": 0,
+        "recentLow": 0,
+        "distanceHigh": 0,
+        "distanceLow": 0,
+        "bias": "neutral",
+        "setup": "data unavailable",
+        "score": 0,
+        "lastCandleTime": int(datetime.now(timezone.utc).timestamp() * 1000),
+        "rsi": None,
+        "rsiSlow": None,
+        "rsiCross": "n/a",
+        "zookeeper": "n/a",
+        "zookeeperDirection": "neutral",
+        "mss": "n/a",
+        "mssDirection": "neutral",
+        "mssAgeBars": None,
+        "mssLevel": None,
+        "defillama": defillama,
+        "dataStatus": "unavailable",
+        "dataError": error[:180],
+    }
+
+
 def build_reports(config: dict[str, object]) -> list[dict[str, object]]:
     symbols = [str(s).upper() for s in config["symbols"]]  # type: ignore[index]
     timeframes = [str(t) for t in config["timeframes"]]  # type: ignore[index]
     defillama = fetch_defillama_context(symbols)
+    previous_reports = load_previous_reports()
     reports = []
     for symbol in symbols:
         for timeframe in timeframes:
-            candles = fetch_klines(symbol, timeframe)
-            structure = detect_structure(candles)
-            reports.append({"symbol": symbol, "timeframe": timeframe, **structure, "defillama": defillama.get(symbol, {})})
+            llama_context = defillama.get(symbol, {})
+            try:
+                candles = fetch_klines(symbol, timeframe)
+                structure = detect_structure(candles)
+                reports.append(
+                    {
+                        "symbol": symbol,
+                        "timeframe": timeframe,
+                        **structure,
+                        "defillama": llama_context,
+                        "dataStatus": "fresh",
+                        "dataError": "",
+                    }
+                )
+            except Exception as exc:  # noqa: BLE001
+                previous = previous_reports.get((symbol, timeframe))
+                if previous:
+                    stale = dict(previous)
+                    stale["defillama"] = llama_context or stale.get("defillama", {})
+                    stale["dataStatus"] = "stale"
+                    stale["dataError"] = str(exc)[:180]
+                    reports.append(stale)
+                    print(f"warning: using stale data for {symbol} {timeframe}: {exc}")
+                else:
+                    reports.append(unavailable_report(symbol, timeframe, str(exc), llama_context))
+                    print(f"warning: unavailable data for {symbol} {timeframe}: {exc}")
             time.sleep(0.15)
     return reports
 
@@ -456,6 +535,13 @@ def render_cards(reports: list[dict[str, object]]) -> str:
         if not isinstance(llama, dict):
             llama = {}
         chain = str(llama.get("chain") or "n/a")
+        data_status = str(r.get("dataStatus", "fresh"))
+        data_error = str(r.get("dataError", ""))
+        status_note = ""
+        if data_status == "stale":
+            status_note = f'<p class="status stale">Donnée temporairement reprise de la dernière mise à jour. Erreur API : {escape(data_error)}</p>'
+        elif data_status == "unavailable":
+            status_note = f'<p class="status unavailable">Donnée indisponible pour cette paire/timeframe. Erreur API : {escape(data_error)}</p>'
         tradingview = f"https://www.tradingview.com/chart/?symbol=BINANCE:{symbol}.P"
         cards.append(
             f"""
@@ -484,6 +570,7 @@ def render_cards(reports: list[dict[str, object]]) -> str:
           <div><span>DEX 24h</span><strong>{fmt_money(llama.get("dexVolume24h"))} <small>{fmt_pct(llama.get("dexChange1d"))}</small></strong></div>
           <div><span>Fees 24h</span><strong>{fmt_money(llama.get("fees24h"))} <small>{fmt_pct(llama.get("feesChange1d"))}</small></strong></div>
         </section>
+        {status_note}
         <p class="summary">Lecture : contexte {escape(bias)} sur {escape(timeframe)}. Le RSI/Zookeeper et le MSS servent de confirmations de momentum/structure; DeFiLlama ajoute le contexte fondamental on-chain quand disponible. Ceci est une watchlist, pas un signal automatique.</p>
       </article>
       """
@@ -542,6 +629,9 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
     .grid span {{ display:block; color:#8494b6; font-size:12px; margin-bottom:6px; }}
     .grid strong {{ font-size:15px; }}
     .summary {{ color:#d5e0f8; line-height:1.45; }}
+    .status {{ border:1px solid #39476b; border-radius:12px; padding:10px 12px; margin:12px 0; color:#d9e4fb; font-size:13px; line-height:1.4; }}
+    .status.stale {{ background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.35); }}
+    .status.unavailable {{ background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.35); }}
     .note {{ color:#8494b6; margin-top:24px; font-size:13px; }}
   </style>
 </head>
