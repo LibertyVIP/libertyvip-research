@@ -1,0 +1,51 @@
+name: Update LibertyVIP Stocks Watchlist
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub cron is UTC. Running at 14:00 and 15:00 UTC lets the job
+    # update at 10:00 America/Toronto during both daylight and standard time.
+    - cron: "0 14,15 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  update-stocks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Toronto time
+        id: toronto
+        run: |
+          hour=$(TZ=America/Toronto date +%H)
+          echo "hour=$hour" >> "$GITHUB_OUTPUT"
+          if [ "$hour" != "10" ]; then
+            echo "Not 10:00 in America/Toronto. Skipping."
+          fi
+
+      - name: Checkout
+        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh Finviz watchlist
+        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
+        run: python scripts/update_finviz_watchlist.py
+
+      - name: Commit and push update
+        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks/index.html stocks/latest.json
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+          else
+            git commit -m "Update LibertyVIP Finviz watchlist"
+            git push
+          fi
