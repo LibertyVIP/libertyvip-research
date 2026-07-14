@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T07:25:04.541979+00:00",
+  "generatedAt": "2026-07-14T12:49:33.645719+00:00",
   "reports": [
     {
       "symbol": "BTCUSDT",
@@ -30,7 +30,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3597488126.603313,
+        "chainTvl": 3590551589.485993,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -71,7 +71,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3597488126.603313,
+        "chainTvl": 3590551589.485993,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -112,7 +112,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3597488126.603313,
+        "chainTvl": 3590551589.485993,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -153,7 +153,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3597488126.603313,
+        "chainTvl": 3590551589.485993,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -194,14 +194,14 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 40007939472.56301,
-        "stablecoins": 150217490639.48813,
-        "dexVolume24h": 1469947032.0,
-        "dexChange1d": 125.37,
-        "dexChange7d": 27.95,
-        "fees24h": 8744947.0,
-        "feesChange1d": -12.55,
-        "feesChange7d": -15.42
+        "chainTvl": 39955284691.81868,
+        "stablecoins": 150193868529.71985,
+        "dexVolume24h": 1478111211.0,
+        "dexChange1d": 126.61,
+        "dexChange7d": 28.65,
+        "fees24h": 8823993.0,
+        "feesChange1d": -11.79,
+        "feesChange7d": -14.8
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch ETHUSDT 15m: HTTP Error 451: "
@@ -235,14 +235,14 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 40007939472.56301,
-        "stablecoins": 150217490639.48813,
-        "dexVolume24h": 1469947032.0,
-        "dexChange1d": 125.37,
-        "dexChange7d": 27.95,
-        "fees24h": 8744947.0,
-        "feesChange1d": -12.55,
-        "feesChange7d": -15.42
+        "chainTvl": 39955284691.81868,
+        "stablecoins": 150193868529.71985,
+        "dexVolume24h": 1478111211.0,
+        "dexChange1d": 126.61,
+        "dexChange7d": 28.65,
+        "fees24h": 8823993.0,
+        "feesChange1d": -11.79,
+        "feesChange7d": -14.8
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch ETHUSDT 1h: HTTP Error 451: "
@@ -276,14 +276,14 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 40007939472.56301,
-        "stablecoins": 150217490639.48813,
-        "dexVolume24h": 1469947032.0,
-        "dexChange1d": 125.37,
-        "dexChange7d": 27.95,
-        "fees24h": 8744947.0,
-        "feesChange1d": -12.55,
-        "feesChange7d": -15.42
+        "chainTvl": 39955284691.81868,
+        "stablecoins": 150193868529.71985,
+        "dexVolume24h": 1478111211.0,
+        "dexChange1d": 126.61,
+        "dexChange7d": 28.65,
+        "fees24h": 8823993.0,
+        "feesChange1d": -11.79,
+        "feesChange7d": -14.8
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch ETHUSDT 4h: HTTP Error 451: "
@@ -317,14 +317,14 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 40007939472.56301,
-        "stablecoins": 150217490639.48813,
-        "dexVolume24h": 1469947032.0,
-        "dexChange1d": 125.37,
-        "dexChange7d": 27.95,
-        "fees24h": 8744947.0,
-        "feesChange1d": -12.55,
-        "feesChange7d": -15.42
+        "chainTvl": 39955284691.81868,
+        "stablecoins": 150193868529.71985,
+        "dexVolume24h": 1478111211.0,
+        "dexChange1d": 126.61,
+        "dexChange7d": 28.65,
+        "fees24h": 8823993.0,
+        "feesChange1d": -11.79,
+        "feesChange7d": -14.8
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch ETHUSDT 1d: HTTP Error 451: "
@@ -358,14 +358,14 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4810832402.76628,
-        "stablecoins": 14598064809.567474,
-        "dexVolume24h": 1653770667.0,
-        "dexChange1d": 36.63,
-        "dexChange7d": -24.37,
-        "fees24h": 5500584.0,
-        "feesChange1d": -3.24,
-        "feesChange7d": -39.85
+        "chainTvl": 4792567788.201168,
+        "stablecoins": 14420796670.768572,
+        "dexVolume24h": 1767975483.0,
+        "dexChange1d": 46.07,
+        "dexChange7d": -19.15,
+        "fees24h": 5497730.0,
+        "feesChange1d": -3.35,
+        "feesChange7d": -39.9
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch SOLUSDT 15m: HTTP Error 451: "
@@ -399,14 +399,14 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4810832402.76628,
-        "stablecoins": 14598064809.567474,
-        "dexVolume24h": 1653770667.0,
-        "dexChange1d": 36.63,
-        "dexChange7d": -24.37,
-        "fees24h": 5500584.0,
-        "feesChange1d": -3.24,
-        "feesChange7d": -39.85
+        "chainTvl": 4792567788.201168,
+        "stablecoins": 14420796670.768572,
+        "dexVolume24h": 1767975483.0,
+        "dexChange1d": 46.07,
+        "dexChange7d": -19.15,
+        "fees24h": 5497730.0,
+        "feesChange1d": -3.35,
+        "feesChange7d": -39.9
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch SOLUSDT 1h: HTTP Error 451: "
@@ -440,14 +440,14 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4810832402.76628,
-        "stablecoins": 14598064809.567474,
-        "dexVolume24h": 1653770667.0,
-        "dexChange1d": 36.63,
-        "dexChange7d": -24.37,
-        "fees24h": 5500584.0,
-        "feesChange1d": -3.24,
-        "feesChange7d": -39.85
+        "chainTvl": 4792567788.201168,
+        "stablecoins": 14420796670.768572,
+        "dexVolume24h": 1767975483.0,
+        "dexChange1d": 46.07,
+        "dexChange7d": -19.15,
+        "fees24h": 5497730.0,
+        "feesChange1d": -3.35,
+        "feesChange7d": -39.9
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch SOLUSDT 4h: HTTP Error 451: "
@@ -481,14 +481,14 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4810832402.76628,
-        "stablecoins": 14598064809.567474,
-        "dexVolume24h": 1653770667.0,
-        "dexChange1d": 36.63,
-        "dexChange7d": -24.37,
-        "fees24h": 5500584.0,
-        "feesChange1d": -3.24,
-        "feesChange7d": -39.85
+        "chainTvl": 4792567788.201168,
+        "stablecoins": 14420796670.768572,
+        "dexVolume24h": 1767975483.0,
+        "dexChange1d": 46.07,
+        "dexChange7d": -19.15,
+        "fees24h": 5497730.0,
+        "feesChange1d": -3.35,
+        "feesChange7d": -39.9
       },
       "dataStatus": "stale",
       "dataError": "Unable to fetch SOLUSDT 1d: HTTP Error 451: "
@@ -658,8 +658,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 437631738.02000785,
-        "stablecoins": 474852731.59717494,
+        "chainTvl": 435986249.84473336,
+        "stablecoins": 477259846.6756305,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -699,8 +699,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 437631738.02000785,
-        "stablecoins": 474852731.59717494,
+        "chainTvl": 435986249.84473336,
+        "stablecoins": 477259846.6756305,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -740,8 +740,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 437631738.02000785,
-        "stablecoins": 474852731.59717494,
+        "chainTvl": 435986249.84473336,
+        "stablecoins": 477259846.6756305,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -781,8 +781,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 437631738.02000785,
-        "stablecoins": 474852731.59717494,
+        "chainTvl": 435986249.84473336,
+        "stablecoins": 477259846.6756305,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -822,8 +822,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 32678231.81317475,
-        "stablecoins": 965693369.6935313,
+        "chainTvl": 32647364.584822666,
+        "stablecoins": 965686868.6807961,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -863,8 +863,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 32678231.81317475,
-        "stablecoins": 965693369.6935313,
+        "chainTvl": 32647364.584822666,
+        "stablecoins": 965686868.6807961,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -904,8 +904,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 32678231.81317475,
-        "stablecoins": 965693369.6935313,
+        "chainTvl": 32647364.584822666,
+        "stablecoins": 965686868.6807961,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -945,8 +945,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 32678231.81317475,
-        "stablecoins": 965693369.6935313,
+        "chainTvl": 32647364.584822666,
+        "stablecoins": 965686868.6807961,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -986,11 +986,11 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4897811412.781281,
-        "stablecoins": 13764460281.228191,
-        "dexVolume24h": 895328958.0,
-        "dexChange1d": -14.72,
-        "dexChange7d": 23.66,
+        "chainTvl": 4891574431.802054,
+        "stablecoins": 13763567675.874306,
+        "dexVolume24h": 928517349.0,
+        "dexChange1d": -11.56,
+        "dexChange7d": 28.24,
         "fees24h": 695388.0,
         "feesChange1d": -23.69,
         "feesChange7d": -54.41
@@ -1027,11 +1027,11 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4897811412.781281,
-        "stablecoins": 13764460281.228191,
-        "dexVolume24h": 895328958.0,
-        "dexChange1d": -14.72,
-        "dexChange7d": 23.66,
+        "chainTvl": 4891574431.802054,
+        "stablecoins": 13763567675.874306,
+        "dexVolume24h": 928517349.0,
+        "dexChange1d": -11.56,
+        "dexChange7d": 28.24,
         "fees24h": 695388.0,
         "feesChange1d": -23.69,
         "feesChange7d": -54.41
@@ -1068,11 +1068,11 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4897811412.781281,
-        "stablecoins": 13764460281.228191,
-        "dexVolume24h": 895328958.0,
-        "dexChange1d": -14.72,
-        "dexChange7d": 23.66,
+        "chainTvl": 4891574431.802054,
+        "stablecoins": 13763567675.874306,
+        "dexVolume24h": 928517349.0,
+        "dexChange1d": -11.56,
+        "dexChange7d": 28.24,
         "fees24h": 695388.0,
         "feesChange1d": -23.69,
         "feesChange7d": -54.41
@@ -1109,11 +1109,11 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4897811412.781281,
-        "stablecoins": 13764460281.228191,
-        "dexVolume24h": 895328958.0,
-        "dexChange1d": -14.72,
-        "dexChange7d": 23.66,
+        "chainTvl": 4891574431.802054,
+        "stablecoins": 13763567675.874306,
+        "dexVolume24h": 928517349.0,
+        "dexChange1d": -11.56,
+        "dexChange7d": 28.24,
         "fees24h": 695388.0,
         "feesChange1d": -23.69,
         "feesChange7d": -54.41
