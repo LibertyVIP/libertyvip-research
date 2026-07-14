@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T20:43:13.820205+00:00",
+  "generatedAt": "2026-07-14T23:38:49.213982+00:00",
   "reports": [
     {
       "symbol": "BTCUSDT",
@@ -30,7 +30,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3705467762.034677,
+        "chainTvl": 3708847899.862173,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -71,7 +71,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3705467762.034677,
+        "chainTvl": 3708847899.862173,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -112,7 +112,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3705467762.034677,
+        "chainTvl": 3708847899.862173,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -153,7 +153,7 @@
       "defillama": {
         "available": true,
         "chain": "Bitcoin",
-        "chainTvl": 3705467762.034677,
+        "chainTvl": 3708847899.862173,
         "stablecoins": null,
         "dexVolume24h": 302515.0,
         "dexChange1d": 22.01,
@@ -194,8 +194,8 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 41081775415.13661,
-        "stablecoins": 150269716089.41147,
+        "chainTvl": 41136914739.08169,
+        "stablecoins": 150289085649.31958,
         "dexVolume24h": 1478111211.0,
         "dexChange1d": 126.61,
         "dexChange7d": 28.65,
@@ -235,8 +235,8 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 41081775415.13661,
-        "stablecoins": 150269716089.41147,
+        "chainTvl": 41136914739.08169,
+        "stablecoins": 150289085649.31958,
         "dexVolume24h": 1478111211.0,
         "dexChange1d": 126.61,
         "dexChange7d": 28.65,
@@ -276,8 +276,8 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 41081775415.13661,
-        "stablecoins": 150269716089.41147,
+        "chainTvl": 41136914739.08169,
+        "stablecoins": 150289085649.31958,
         "dexVolume24h": 1478111211.0,
         "dexChange1d": 126.61,
         "dexChange7d": 28.65,
@@ -317,8 +317,8 @@
       "defillama": {
         "available": true,
         "chain": "Ethereum",
-        "chainTvl": 41081775415.13661,
-        "stablecoins": 150269716089.41147,
+        "chainTvl": 41136914739.08169,
+        "stablecoins": 150289085649.31958,
         "dexVolume24h": 1478111211.0,
         "dexChange1d": 126.61,
         "dexChange7d": 28.65,
@@ -358,8 +358,8 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4870784697.10911,
-        "stablecoins": 14426396027.63096,
+        "chainTvl": 4886698559.777641,
+        "stablecoins": 14509763681.4069,
         "dexVolume24h": 1767975483.0,
         "dexChange1d": 46.07,
         "dexChange7d": -19.15,
@@ -399,8 +399,8 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4870784697.10911,
-        "stablecoins": 14426396027.63096,
+        "chainTvl": 4886698559.777641,
+        "stablecoins": 14509763681.4069,
         "dexVolume24h": 1767975483.0,
         "dexChange1d": 46.07,
         "dexChange7d": -19.15,
@@ -440,8 +440,8 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4870784697.10911,
-        "stablecoins": 14426396027.63096,
+        "chainTvl": 4886698559.777641,
+        "stablecoins": 14509763681.4069,
         "dexVolume24h": 1767975483.0,
         "dexChange1d": 46.07,
         "dexChange7d": -19.15,
@@ -481,8 +481,8 @@
       "defillama": {
         "available": true,
         "chain": "Solana",
-        "chainTvl": 4870784697.10911,
-        "stablecoins": 14426396027.63096,
+        "chainTvl": 4886698559.777641,
+        "stablecoins": 14509763681.4069,
         "dexVolume24h": 1767975483.0,
         "dexChange1d": 46.07,
         "dexChange7d": -19.15,
@@ -658,8 +658,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 449351337.89052796,
-        "stablecoins": 476053123.3466397,
+        "chainTvl": 441685698.12265754,
+        "stablecoins": 476366538.1558306,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -699,8 +699,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 449351337.89052796,
-        "stablecoins": 476053123.3466397,
+        "chainTvl": 441685698.12265754,
+        "stablecoins": 476366538.1558306,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -740,8 +740,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 449351337.89052796,
-        "stablecoins": 476053123.3466397,
+        "chainTvl": 441685698.12265754,
+        "stablecoins": 476366538.1558306,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -781,8 +781,8 @@
       "defillama": {
         "available": true,
         "chain": "Sui",
-        "chainTvl": 449351337.89052796,
-        "stablecoins": 476053123.3466397,
+        "chainTvl": 441685698.12265754,
+        "stablecoins": 476366538.1558306,
         "dexVolume24h": 28849253.0,
         "dexChange1d": 37.44,
         "dexChange7d": -25.7,
@@ -822,8 +822,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 33711663.14472345,
-        "stablecoins": 958231903.1888018,
+        "chainTvl": 33862328.92925817,
+        "stablecoins": 962324665.0724103,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -863,8 +863,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 33711663.14472345,
-        "stablecoins": 958231903.1888018,
+        "chainTvl": 33862328.92925817,
+        "stablecoins": 962324665.0724103,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -904,8 +904,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 33711663.14472345,
-        "stablecoins": 958231903.1888018,
+        "chainTvl": 33862328.92925817,
+        "stablecoins": 962324665.0724103,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -945,8 +945,8 @@
       "defillama": {
         "available": true,
         "chain": "XRPL",
-        "chainTvl": 33711663.14472345,
-        "stablecoins": 958231903.1888018,
+        "chainTvl": 33862328.92925817,
+        "stablecoins": 962324665.0724103,
         "dexVolume24h": 2288822.0,
         "dexChange1d": 20.24,
         "dexChange7d": -20.29,
@@ -986,8 +986,8 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4966852191.619005,
-        "stablecoins": 13762137041.682802,
+        "chainTvl": 4959662893.244381,
+        "stablecoins": 13759793220.636387,
         "dexVolume24h": 928517349.0,
         "dexChange1d": -11.56,
         "dexChange7d": 28.24,
@@ -1027,8 +1027,8 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4966852191.619005,
-        "stablecoins": 13762137041.682802,
+        "chainTvl": 4959662893.244381,
+        "stablecoins": 13759793220.636387,
         "dexVolume24h": 928517349.0,
         "dexChange1d": -11.56,
         "dexChange7d": 28.24,
@@ -1068,8 +1068,8 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4966852191.619005,
-        "stablecoins": 13762137041.682802,
+        "chainTvl": 4959662893.244381,
+        "stablecoins": 13759793220.636387,
         "dexVolume24h": 928517349.0,
         "dexChange1d": -11.56,
         "dexChange7d": 28.24,
@@ -1109,8 +1109,8 @@
       "defillama": {
         "available": true,
         "chain": "BSC",
-        "chainTvl": 4966852191.619005,
-        "stablecoins": 13762137041.682802,
+        "chainTvl": 4959662893.244381,
+        "stablecoins": 13759793220.636387,
         "dexVolume24h": 928517349.0,
         "dexChange1d": -11.56,
         "dexChange7d": 28.24,
