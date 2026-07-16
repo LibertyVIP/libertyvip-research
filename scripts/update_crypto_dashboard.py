@@ -16,6 +16,8 @@ CRYPTO_DIR = ROOT / "crypto"
 ASSETS_PATH = CRYPTO_DIR / "assets.json"
 BINANCE_FUTURES = "https://fapi.binance.com"
 BINANCE_SPOT = "https://api.binance.com"
+BYBIT = "https://api.bybit.com"
+OKX = "https://www.okx.com"
 DEFILLAMA = "https://api.llama.fi"
 DEFILLAMA_STABLES = "https://stablecoins.llama.fi"
 
@@ -28,6 +30,10 @@ DEFILLAMA_CHAIN_BY_SYMBOL = {
     "BNBUSDT": "BSC",
     "ZECUSDT": None,
 }
+
+
+class CandleFetchError(RuntimeError):
+    pass
 
 
 def request_json(url: str) -> object:
@@ -43,7 +49,98 @@ def safe_request_json(url: str) -> object | None:
         return None
 
 
-def fetch_klines(symbol: str, interval: str, limit: int = 220) -> list[dict[str, float]]:
+def normalize_candles(candles: list[dict[str, float]]) -> list[dict[str, float]]:
+    return sorted(candles, key=lambda c: c["time"])
+
+
+def bybit_interval(interval: str) -> str:
+    return {
+        "15m": "15",
+        "1h": "60",
+        "4h": "240",
+        "1d": "D",
+    }.get(interval, interval)
+
+
+def okx_interval(interval: str) -> str:
+    return {
+        "15m": "15m",
+        "1h": "1H",
+        "4h": "4H",
+        "1d": "1D",
+    }.get(interval, interval)
+
+
+def okx_inst_ids(symbol: str) -> list[str]:
+    base = symbol.removesuffix("USDT")
+    return [f"{base}-USDT-SWAP", f"{base}-USDT"]
+
+
+def fetch_bybit_klines(symbol: str, interval: str, limit: int = 220) -> list[dict[str, float]]:
+    params_base = {"symbol": symbol, "interval": bybit_interval(interval), "limit": min(limit, 1000)}
+    errors: list[str] = []
+    for category in ("linear", "spot"):
+        params = urlencode({"category": category, **params_base})
+        raw = request_json(f"{BYBIT}/v5/market/kline?{params}")
+        if not isinstance(raw, dict):
+            errors.append(f"{category}: unexpected response")
+            continue
+        if raw.get("retCode") != 0:
+            errors.append(f"{category}: {raw.get('retMsg')}")
+            continue
+        result = raw.get("result")
+        rows = result.get("list") if isinstance(result, dict) else None
+        if not isinstance(rows, list) or not rows:
+            errors.append(f"{category}: empty")
+            continue
+        candles = []
+        for item in rows:
+            candles.append(
+                {
+                    "time": float(item[0]),
+                    "open": float(item[1]),
+                    "high": float(item[2]),
+                    "low": float(item[3]),
+                    "close": float(item[4]),
+                    "volume": float(item[5]),
+                }
+            )
+        return normalize_candles(candles)
+    raise CandleFetchError("; ".join(errors) or "Bybit returned no candles")
+
+
+def fetch_okx_klines(symbol: str, interval: str, limit: int = 220) -> list[dict[str, float]]:
+    errors: list[str] = []
+    for inst_id in okx_inst_ids(symbol):
+        params = urlencode({"instId": inst_id, "bar": okx_interval(interval), "limit": min(limit, 300)})
+        raw = request_json(f"{OKX}/api/v5/market/candles?{params}")
+        if not isinstance(raw, dict):
+            errors.append(f"{inst_id}: unexpected response")
+            continue
+        if str(raw.get("code")) != "0":
+            errors.append(f"{inst_id}: {raw.get('msg')}")
+            continue
+        rows = raw.get("data")
+        if not isinstance(rows, list) or not rows:
+            errors.append(f"{inst_id}: empty")
+            continue
+        candles = []
+        for item in rows:
+            candles.append(
+                {
+                    "time": float(item[0]),
+                    "open": float(item[1]),
+                    "high": float(item[2]),
+                    "low": float(item[3]),
+                    "close": float(item[4]),
+                    "volume": float(item[5]),
+                }
+            )
+        return normalize_candles(candles)
+    raise CandleFetchError("; ".join(errors) or "OKX returned no candles")
+
+
+def fetch_binance_klines(symbol: str, interval: str, limit: int = 220) -> list[dict[str, float]]:
     params = urlencode({"symbol": symbol, "interval": interval, "limit": limit})
     urls = [
         f"{BINANCE_FUTURES}/fapi/v1/klines?{params}",
@@ -66,10 +163,27 @@ def fetch_klines(symbol: str, interval: str, limit: int = 220) -> list[dict[str,
                     }
                 )
             if candles:
-                return candles
+                return normalize_candles(candles)
         except Exception as exc:  # noqa: BLE001
             last_error = exc
-    raise RuntimeError(f"Unable to fetch {symbol} {interval}: {last_error}")
+    raise CandleFetchError(f"Binance returned no candles: {last_error}")
+
+
+def fetch_klines(symbol: str, interval: str, limit: int = 220) -> tuple[list[dict[str, float]], str]:
+    errors: list[str] = []
+    sources = [
+        ("Bybit", fetch_bybit_klines),
+        ("OKX", fetch_okx_klines),
+        ("Binance", fetch_binance_klines),
+    ]
+    for source_name, fetcher in sources:
+        try:
+            candles = fetcher(symbol, interval, limit)
+            if candles:
+                return candles, source_name
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{source_name}: {exc}")
+    raise CandleFetchError(f"Unable to fetch {symbol} {interval}. " + " | ".join(errors))
 
 
 def ema(values: list[float], period: int) -> float:
@@ -482,6 +596,7 @@ def unavailable_report(symbol: str, timeframe: str, error: str, defillama: dict[
         "mssLevel": None,
         "defillama": defillama,
         "dataStatus": "unavailable",
+        "dataSource": "none",
         "dataError": error[:180],
     }
 
@@ -496,7 +611,7 @@ def build_reports(config: dict[str, object]) -> list[dict[str, object]]:
         for timeframe in timeframes:
             llama_context = defillama.get(symbol, {})
             try:
-                candles = fetch_klines(symbol, timeframe)
+                candles, data_source = fetch_klines(symbol, timeframe)
                 structure = detect_structure(candles)
                 reports.append(
                     {
@@ -505,6 +620,7 @@ def build_reports(config: dict[str, object]) -> list[dict[str, object]]:
                         **structure,
                         "defillama": llama_context,
                         "dataStatus": "fresh",
+                        "dataSource": data_source,
                         "dataError": "",
                     }
                 )
@@ -514,6 +630,7 @@ def build_reports(config: dict[str, object]) -> list[dict[str, object]]:
                     stale = dict(previous)
                     stale["defillama"] = llama_context or stale.get("defillama", {})
                     stale["dataStatus"] = "stale"
+                    stale["dataSource"] = f"stale/{stale.get('dataSource', 'previous')}"
                     stale["dataError"] = str(exc)[:180]
                     reports.append(stale)
                     print(f"warning: using stale data for {symbol} {timeframe}: {exc}")
@@ -536,6 +653,7 @@ def render_cards(reports: list[dict[str, object]]) -> str:
             llama = {}
         chain = str(llama.get("chain") or "n/a")
         data_status = str(r.get("dataStatus", "fresh"))
+        data_source = str(r.get("dataSource", "n/a"))
         data_error = str(r.get("dataError", ""))
         status_note = ""
         if data_status == "stale":
@@ -562,6 +680,7 @@ def render_cards(reports: list[dict[str, object]]) -> str:
           <div><span>RSI cross</span><strong>{escape(str(r.get("rsiCross", "n/a")))}</strong></div>
           <div><span>Zookeeper</span><strong>{escape(str(r.get("zookeeper", "n/a")))}</strong></div>
           <div><span>MSS</span><strong>{escape(str(r.get("mss", "none")))} <small>{str(r.get("mssAgeBars")) + " bars" if isinstance(r.get("mssAgeBars"), int) else ""}</small></strong></div>
+          <div><span>Data source</span><strong>{escape(data_source)}</strong></div>
           <div><span>Vol ratio</span><strong>{float(r["volumeRatio"]):.2f}x</strong></div>
           <div><span>Near high/low</span><strong>{float(r["distanceHigh"]):+.2f}% / {float(r["distanceLow"]):+.2f}%</strong></div>
           <div><span>DeFiLlama chain</span><strong>{escape(chain)}</strong></div>
@@ -637,7 +756,7 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
 </head>
 <body>
   <h1>LibertyVIP Crypto Watchlist</h1>
-  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur les chandelles publiques Binance + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Pour éviter les doublons, le dashboard affiche une seule carte par actif selon la timeframe sélectionnée.</p>
+  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur des chandelles publiques multi-sources (Bybit, OKX, Binance en backup) + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Pour éviter les doublons, le dashboard affiche une seule carte par actif selon la timeframe sélectionnée.</p>
   <nav class="toolbar"><span>Mode</span>{''.join(mode_buttons)}<span class="hint">Swing ouvre 1D · Intraday ouvre 4H · Active ouvre 1H</span></nav>
   <nav class="toolbar"><span>Timeframe</span>{''.join(timeframe_buttons)}</nav>
   <main class="cards">{render_cards(reports)}</main>
