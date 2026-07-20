@@ -5,6 +5,7 @@ import json
 import re
 import time
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
@@ -15,7 +16,7 @@ FILTERS = "fa_epsqoq_pos,fa_pe_o30,fa_profitmargin_pos,fa_quickratio_o1,fa_roa_o
 SCREENER_URL = f"{BASE}/screener.ashx?v=111&f={FILTERS}&o=-marketcap"
 
 
-def fetch(url: str) -> str:
+def fetch(url: str, attempts: int = 3) -> str:
     req = Request(
         url,
         headers={
@@ -23,8 +24,16 @@ def fetch(url: str) -> str:
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         },
     )
-    with urlopen(req, timeout=45) as resp:
-        return resp.read().decode("utf-8", errors="replace")
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            with urlopen(req, timeout=45) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except (HTTPError, URLError, TimeoutError) as exc:
+            last_error = exc
+            if attempt < attempts:
+                time.sleep(2 * attempt)
+    raise RuntimeError(f"Unable to fetch Finviz after {attempts} attempts: {last_error}")
 
 
 def clean(value: str) -> str:

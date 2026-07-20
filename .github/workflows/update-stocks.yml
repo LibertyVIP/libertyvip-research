@@ -3,9 +3,14 @@ name: Update LibertyVIP Stocks Watchlist
 on:
   workflow_dispatch:
   schedule:
-    # GitHub cron is UTC. Running at 14:00 and 15:00 UTC lets the job
-    # update at 10:00 America/Toronto during both daylight and standard time.
-    - cron: "0 14,15 * * 1"
+    # GitHub cron is UTC and top-of-hour schedules can be delayed/dropped.
+    # Running at :17 avoids the busy minute. The Toronto hour check below
+    # keeps the real update around 10:17 AM during daylight/standard time.
+    - cron: "17 14,15 * * 1"
+
+concurrency:
+  group: liberty-stocks-watchlist
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -18,9 +23,13 @@ jobs:
         id: toronto
         run: |
           hour=$(TZ=America/Toronto date +%H)
+          minute=$(TZ=America/Toronto date +%M)
           echo "hour=$hour" >> "$GITHUB_OUTPUT"
+          echo "minute=$minute" >> "$GITHUB_OUTPUT"
           if [ "$hour" != "10" ]; then
             echo "Not 10:00 in America/Toronto. Skipping."
+          else
+            echo "Running stock update at $hour:$minute America/Toronto."
           fi
 
       - name: Checkout
