@@ -48,11 +48,13 @@ def parse_rows(page_html: str) -> list[dict[str, str]]:
     for row_match in re.finditer(r"<tr class=\"styled-row.*?</tr>", page_html, re.S):
         row = row_match.group(0)
         cells = [clean(cell) for cell in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)]
+        ticker_match = re.search(r'data-boxover-ticker="([A-Z. -]+)"', row)
+        ticker = ticker_match.group(1).strip() if ticker_match else cells[1]
         if len(cells) >= 11 and cells[0].isdigit():
             rows.append(
                 {
                     "rank": cells[0],
-                    "ticker": cells[1],
+                    "ticker": ticker,
                     "company": cells[2],
                     "sector": cells[3],
                     "industry": cells[4],
