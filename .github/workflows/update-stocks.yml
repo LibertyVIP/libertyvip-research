@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     # GitHub cron is UTC and top-of-hour schedules can be delayed/dropped.
-    # Running at :17 avoids the busy minute. The Toronto hour check below
-    # keeps the real update around 10:17 AM during daylight/standard time.
+    # Running at :17 avoids the busy minute. Two UTC slots cover both
+    # daylight and standard time; if GitHub starts late, the job still runs.
     - cron: "17 14,15 * * 1"
 
 concurrency:
@@ -19,35 +19,22 @@ jobs:
   update-stocks:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Toronto time
-        id: toronto
+      - name: Log Toronto time
         run: |
-          hour=$(TZ=America/Toronto date +%H)
-          minute=$(TZ=America/Toronto date +%M)
-          echo "hour=$hour" >> "$GITHUB_OUTPUT"
-          echo "minute=$minute" >> "$GITHUB_OUTPUT"
-          if [ "$hour" != "10" ]; then
-            echo "Not 10:00 in America/Toronto. Skipping."
-          else
-            echo "Running stock update at $hour:$minute America/Toronto."
-          fi
+          echo "Running stock update at $(TZ=America/Toronto date '+%Y-%m-%d %H:%M:%S %Z')"
 
       - name: Checkout
-        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
         uses: actions/checkout@v4
 
       - name: Set up Python
-        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Refresh Finviz watchlist
-        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
         run: python scripts/update_finviz_watchlist.py
 
       - name: Commit and push update
-        if: steps.toronto.outputs.hour == '10' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
