@@ -6,11 +6,11 @@
     "sector": "Technology",
     "industry": "Semiconductors",
     "country": "Taiwan",
-    "market_cap": "2224.53B",
-    "pe": "30.96",
-    "price": "428.91",
-    "change": "2.85%",
-    "volume": "12,283,959"
+    "market_cap": "2190.61B",
+    "pe": "30.49",
+    "price": "422.37",
+    "change": "-2.51%",
+    "volume": "9,373,429"
   },
   {
     "rank": "2",
@@ -19,11 +19,11 @@
     "sector": "Technology",
     "industry": "Semiconductors",
     "country": "USA",
-    "market_cap": "1702.71B",
-    "pe": "45.68",
-    "price": "357.89",
-    "change": "0.21%",
-    "volume": "32,863,265"
+    "market_cap": "1648.29B",
+    "pe": "44.08",
+    "price": "345.29",
+    "change": "-4.61%",
+    "volume": "16,976,732"
   },
   {
     "rank": "3",
@@ -32,11 +32,11 @@
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - General",
     "country": "USA",
-    "market_cap": "1081.96B",
-    "pe": "39.06",
-    "price": "1149.36",
-    "change": "-0.88%",
-    "volume": "2,220,418"
+    "market_cap": "1072.76B",
+    "pe": "38.72",
+    "price": "1139.59",
+    "change": "2.14%",
+    "volume": "1,322,639"
   },
   {
     "rank": "4",
@@ -45,11 +45,11 @@
     "sector": "Financial",
     "industry": "Credit Services",
     "country": "USA",
-    "market_cap": "507.39B",
-    "pe": "31.87",
-    "price": "579.21",
-    "change": "-1.11%",
-    "volume": "1,774,728"
+    "market_cap": "501.39B",
+    "pe": "31.49",
+    "price": "572.36",
+    "change": "0.56%",
+    "volume": "1,565,274"
   },
   {
     "rank": "5",
@@ -58,11 +58,11 @@
     "sector": "Technology",
     "industry": "Software - Infrastructure",
     "country": "USA",
-    "market_cap": "418.93B",
-    "pe": "148.99",
-    "price": "174.33",
-    "change": "-4.49%",
-    "volume": "27,963,048"
+    "market_cap": "415.30B",
+    "pe": "147.27",
+    "price": "172.82",
+    "change": "3.34%",
+    "volume": "21,614,817"
   },
   {
     "rank": "6",
@@ -71,11 +71,11 @@
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
     "country": "USA",
-    "market_cap": "384.97B",
-    "pe": "53.37",
-    "price": "307.65",
-    "change": "5.12%",
-    "volume": "8,359,371"
+    "market_cap": "345.97B",
+    "pe": "47.97",
+    "price": "276.48",
+    "change": "-7.29%",
+    "volume": "6,585,012"
   },
   {
     "rank": "7",
@@ -84,11 +84,11 @@
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
     "country": "USA",
-    "market_cap": "360.86B",
-    "pe": "39.21",
-    "price": "454.71",
-    "change": "4.31%",
-    "volume": "6,016,831"
+    "market_cap": "339.85B",
+    "pe": "36.93",
+    "price": "428.24",
+    "change": "-6.19%",
+    "volume": "4,303,429"
   },
   {
     "rank": "8",
@@ -97,50 +97,50 @@
     "sector": "Technology",
     "industry": "Semiconductors",
     "country": "United Kingdom",
-    "market_cap": "269.23B",
-    "pe": "258.61",
-    "price": "252.09",
-    "change": "3.92%",
-    "volume": "4,132,412"
+    "market_cap": "257.85B",
+    "pe": "247.67",
+    "price": "241.43",
+    "change": "-8.82%",
+    "volume": "4,691,454"
   },
   {
     "rank": "9",
-    "ticker": "ANET",
-    "company": "Arista Networks Inc",
-    "sector": "Technology",
-    "industry": "Computer Hardware",
-    "country": "USA",
-    "market_cap": "244.40B",
-    "pe": "61.09",
-    "price": "193.78",
-    "change": "1.22%",
-    "volume": "4,208,589"
-  },
-  {
-    "rank": "10",
-    "ticker": "KLAC",
-    "company": "KLA Corp",
-    "sector": "Technology",
-    "industry": "Semiconductor Equipment & Materials",
-    "country": "USA",
-    "market_cap": "242.50B",
-    "pe": "50.60",
-    "price": "185.60",
-    "change": "7.32%",
-    "volume": "12,725,635"
-  },
-  {
-    "rank": "11",
     "ticker": "TXN",
     "company": "Texas Instruments Inc",
     "sector": "Technology",
     "industry": "Semiconductors",
     "country": "USA",
-    "market_cap": "236.02B",
-    "pe": "39.32",
-    "price": "258.44",
-    "change": "1.82%",
-    "volume": "4,244,015"
+    "market_cap": "242.09B",
+    "pe": "40.33",
+    "price": "265.09",
+    "change": "-1.34%",
+    "volume": "3,125,390"
+  },
+  {
+    "rank": "10",
+    "ticker": "ANET",
+    "company": "Arista Networks Inc",
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "country": "USA",
+    "market_cap": "238.46B",
+    "pe": "59.61",
+    "price": "189.07",
+    "change": "-5.27%",
+    "volume": "4,048,424"
+  },
+  {
+    "rank": "11",
+    "ticker": "KLAC",
+    "company": "KLA Corp",
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "country": "USA",
+    "market_cap": "222.18B",
+    "pe": "46.36",
+    "price": "170.05",
+    "change": "-5.86%",
+    "volume": "6,342,626"
   },
   {
     "rank": "12",
@@ -149,11 +149,11 @@
     "sector": "Technology",
     "industry": "Electronic Components",
     "country": "USA",
-    "market_cap": "204.13B",
-    "pe": "41.45",
-    "price": "82.78",
-    "change": "0.87%",
-    "volume": "11,224,540"
+    "market_cap": "195.30B",
+    "pe": "39.65",
+    "price": "79.20",
+    "change": "-5.62%",
+    "volume": "7,881,332"
   },
   {
     "rank": "13",
@@ -162,11 +162,11 @@
     "sector": "Technology",
     "industry": "Semiconductors",
     "country": "USA",
-    "market_cap": "196.03B",
-    "pe": "73.61",
-    "price": "223.55",
-    "change": "7.05%",
-    "volume": "21,218,082"
+    "market_cap": "194.23B",
+    "pe": "72.94",
+    "price": "221.50",
+    "change": "-6.18%",
+    "volume": "15,566,765"
   },
   {
     "rank": "14",
@@ -174,12 +174,12 @@
     "company": "Seagate Technology Holdings Plc",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "country": "Singapore",
-    "market_cap": "192.49B",
-    "pe": "61.21",
-    "price": "849.28",
-    "change": "6.34%",
-    "volume": "2,559,714"
+    "country": "USA",
+    "market_cap": "185.66B",
+    "pe": "58.85",
+    "price": "816.48",
+    "change": "-1.65%",
+    "volume": "3,427,987"
   },
   {
     "rank": "15",
@@ -188,37 +188,37 @@
     "sector": "Technology",
     "industry": "Software - Application",
     "country": "Canada",
-    "market_cap": "186.68B",
-    "pe": "97.88",
-    "price": "145.09",
-    "change": "-0.54%",
-    "volume": "6,905,871"
+    "market_cap": "172.02B",
+    "pe": "90.19",
+    "price": "133.70",
+    "change": "3.81%",
+    "volume": "5,507,983"
   },
   {
     "rank": "16",
-    "ticker": "VRTX",
-    "company": "Vertex Pharmaceuticals Inc",
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "country": "USA",
-    "market_cap": "138.42B",
-    "pe": "31.77",
-    "price": "546.12",
-    "change": "-2.12%",
-    "volume": "803,524"
-  },
-  {
-    "rank": "17",
     "ticker": "ISRG",
     "company": "Intuitive Surgical Inc",
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
     "country": "USA",
-    "market_cap": "129.55B",
-    "pe": "42.03",
-    "price": "366.70",
-    "change": "-0.85%",
-    "volume": "2,081,783"
+    "market_cap": "133.15B",
+    "pe": "43.20",
+    "price": "376.89",
+    "change": "2.10%",
+    "volume": "1,558,305"
+  },
+  {
+    "rank": "17",
+    "ticker": "VRTX",
+    "company": "Vertex Pharmaceuticals Inc",
+    "sector": "Healthcare",
+    "industry": "Biotechnology",
+    "country": "USA",
+    "market_cap": "131.55B",
+    "pe": "30.20",
+    "price": "519.03",
+    "change": "0.70%",
+    "volume": "375,510"
   },
   {
     "rank": "18",
@@ -227,11 +227,11 @@
     "sector": "Technology",
     "industry": "Software - Infrastructure",
     "country": "USA",
-    "market_cap": "114.67B",
-    "pe": "55.07",
-    "price": "156.29",
-    "change": "-0.04%",
-    "volume": "3,060,504"
+    "market_cap": "124.41B",
+    "pe": "59.75",
+    "price": "169.57",
+    "change": "8.65%",
+    "volume": "4,266,682"
   },
   {
     "rank": "19",
@@ -240,11 +240,11 @@
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
     "country": "Sweden",
-    "market_cap": "111.68B",
-    "pe": "33.77",
-    "price": "542.43",
-    "change": "-3.16%",
-    "volume": "1,370,547"
+    "market_cap": "114.63B",
+    "pe": "34.66",
+    "price": "556.78",
+    "change": "5.90%",
+    "volume": "1,218,574"
   },
   {
     "rank": "20",
@@ -253,11 +253,11 @@
     "sector": "Industrials",
     "industry": "Electrical Equipment & Parts",
     "country": "USA",
-    "market_cap": "108.00B",
-    "pe": "63.48",
-    "price": "280.53",
-    "change": "4.35%",
-    "volume": "3,322,756"
+    "market_cap": "92.02B",
+    "pe": "54.08",
+    "price": "239.01",
+    "change": "-7.02%",
+    "volume": "8,953,394"
   },
   {
     "rank": "21",
@@ -266,11 +266,11 @@
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
     "country": "USA",
-    "market_cap": "85.85B",
-    "pe": "40.66",
-    "price": "43.82",
-    "change": "-0.59%",
-    "volume": "12,453,551"
+    "market_cap": "86.60B",
+    "pe": "41.02",
+    "price": "44.21",
+    "change": "1.85%",
+    "volume": "4,726,112"
   },
   {
     "rank": "22",
@@ -279,11 +279,11 @@
     "sector": "Financial",
     "industry": "Financial Data & Stock Exchanges",
     "country": "USA",
-    "market_cap": "85.48B",
-    "pe": "31.30",
-    "price": "493.55",
-    "change": "-2.13%",
-    "volume": "424,847"
+    "market_cap": "82.43B",
+    "pe": "30.18",
+    "price": "475.94",
+    "change": "0.21%",
+    "volume": "348,349"
   },
   {
     "rank": "23",
@@ -292,63 +292,63 @@
     "sector": "Technology",
     "industry": "Software - Application",
     "country": "USA",
-    "market_cap": "80.61B",
-    "pe": "58.23",
-    "price": "292.70",
-    "change": "-3.99%",
-    "volume": "4,226,039"
+    "market_cap": "77.09B",
+    "pe": "55.69",
+    "price": "279.91",
+    "change": "-3.27%",
+    "volume": "1,344,355"
   },
   {
     "rank": "24",
-    "ticker": "MPWR",
-    "company": "Monolithic Power System Inc",
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "country": "USA",
-    "market_cap": "60.14B",
-    "pe": "75.00",
-    "price": "1223.86",
-    "change": "0.84%",
-    "volume": "625,898"
-  },
-  {
-    "rank": "25",
     "ticker": "FAST",
     "company": "Fastenal Co",
     "sector": "Industrials",
     "industry": "Industrial Distribution",
     "country": "USA",
-    "market_cap": "56.92B",
-    "pe": "42.21",
-    "price": "49.60",
-    "change": "0.75%",
-    "volume": "6,568,440"
+    "market_cap": "56.90B",
+    "pe": "42.20",
+    "price": "49.58",
+    "change": "0.54%",
+    "volume": "3,589,285"
+  },
+  {
+    "rank": "25",
+    "ticker": "MPWR",
+    "company": "Monolithic Power System Inc",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "country": "USA",
+    "market_cap": "56.79B",
+    "pe": "70.82",
+    "price": "1155.67",
+    "change": "-6.38%",
+    "volume": "418,173"
   },
   {
     "rank": "26",
-    "ticker": "TER",
-    "company": "Teradyne Inc",
-    "sector": "Technology",
-    "industry": "Semiconductor Equipment & Materials",
-    "country": "USA",
-    "market_cap": "55.82B",
-    "pe": "48.98",
-    "price": "357.03",
-    "change": "5.45%",
-    "volume": "2,247,433"
-  },
-  {
-    "rank": "27",
     "ticker": "KEYS",
     "company": "Keysight Technologies Inc",
     "sector": "Technology",
     "industry": "Scientific & Technical Instruments",
     "country": "USA",
-    "market_cap": "55.71B",
-    "pe": "45.07",
-    "price": "327.21",
-    "change": "1.42%",
-    "volume": "605,817"
+    "market_cap": "54.13B",
+    "pe": "43.79",
+    "price": "317.95",
+    "change": "-6.11%",
+    "volume": "686,250"
+  },
+  {
+    "rank": "27",
+    "ticker": "TER",
+    "company": "Teradyne Inc",
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "country": "USA",
+    "market_cap": "52.39B",
+    "pe": "45.98",
+    "price": "335.13",
+    "change": "-11.74%",
+    "volume": "2,818,442"
   },
   {
     "rank": "28",
@@ -357,11 +357,11 @@
     "sector": "Basic Materials",
     "industry": "Gold",
     "country": "Canada",
-    "market_cap": "51.34B",
-    "pe": "34.78",
-    "price": "266.18",
-    "change": "-1.53%",
-    "volume": "462,534"
+    "market_cap": "50.52B",
+    "pe": "34.23",
+    "price": "261.95",
+    "change": "-1.52%",
+    "volume": "348,761"
   },
   {
     "rank": "29",
@@ -370,11 +370,11 @@
     "sector": "Healthcare",
     "industry": "Health Information Services",
     "country": "USA",
-    "market_cap": "44.54B",
-    "pe": "45.26",
-    "price": "275.09",
-    "change": "-3.27%",
-    "volume": "1,152,410"
+    "market_cap": "42.93B",
+    "pe": "43.62",
+    "price": "265.14",
+    "change": "1.04%",
+    "volume": "848,696"
   },
   {
     "rank": "30",
@@ -383,11 +383,11 @@
     "sector": "Industrials",
     "industry": "Trucking",
     "country": "USA",
-    "market_cap": "38.54B",
-    "pe": "35.77",
-    "price": "185.87",
-    "change": "0.06%",
-    "volume": "2,389,882"
+    "market_cap": "37.70B",
+    "pe": "34.99",
+    "price": "181.83",
+    "change": "1.14%",
+    "volume": "824,511"
   },
   {
     "rank": "31",
@@ -396,11 +396,11 @@
     "sector": "Technology",
     "industry": "Software - Infrastructure",
     "country": "USA",
-    "market_cap": "35.78B",
-    "pe": "32.42",
-    "price": "232.98",
-    "change": "-3.12%",
-    "volume": "1,475,709"
+    "market_cap": "35.62B",
+    "pe": "32.27",
+    "price": "231.93",
+    "change": "2.01%",
+    "volume": "802,998"
   },
   {
     "rank": "32",
@@ -409,11 +409,11 @@
     "sector": "Healthcare",
     "industry": "Biotechnology",
     "country": "USA",
-    "market_cap": "35.61B",
-    "pe": "44.93",
-    "price": "266.11",
-    "change": "0.61%",
-    "volume": "1,431,221"
+    "market_cap": "33.19B",
+    "pe": "41.88",
+    "price": "248.04",
+    "change": "-0.26%",
+    "volume": "478,452"
   },
   {
     "rank": "33",
@@ -422,11 +422,11 @@
     "sector": "Healthcare",
     "industry": "Medical Devices",
     "country": "USA",
-    "market_cap": "33.17B",
-    "pe": "34.70",
-    "price": "87.90",
-    "change": "-2.02%",
-    "volume": "2,361,537"
+    "market_cap": "31.95B",
+    "pe": "33.42",
+    "price": "84.67",
+    "change": "1.97%",
+    "volume": "1,290,656"
   },
   {
     "rank": "34",
@@ -435,11 +435,11 @@
     "sector": "Technology",
     "industry": "Semiconductors",
     "country": "Cayman Islands",
-    "market_cap": "32.06B",
-    "pe": "60.87",
-    "price": "170.57",
-    "change": "3.90%",
-    "volume": "10,756,465"
+    "market_cap": "28.54B",
+    "pe": "54.20",
+    "price": "151.87",
+    "change": "-6.80%",
+    "volume": "6,925,265"
   },
   {
     "rank": "35",
@@ -448,63 +448,63 @@
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
     "country": "USA",
-    "market_cap": "23.93B",
-    "pe": "43.46",
-    "price": "339.97",
-    "change": "-0.81%",
-    "volume": "364,311"
+    "market_cap": "25.01B",
+    "pe": "45.43",
+    "price": "355.38",
+    "change": "2.64%",
+    "volume": "295,914"
   },
   {
     "rank": "36",
-    "ticker": "CRS",
-    "company": "Carpenter Technology Corp",
-    "sector": "Industrials",
-    "industry": "Metal Fabrication",
-    "country": "USA",
-    "market_cap": "23.56B",
-    "pe": "45.15",
-    "price": "475.33",
-    "change": "1.68%",
-    "volume": "445,130"
-  },
-  {
-    "rank": "37",
     "ticker": "FFIV",
     "company": "F5 Inc",
     "sector": "Technology",
     "industry": "Software - Infrastructure",
     "country": "USA",
-    "market_cap": "22.11B",
-    "pe": "31.11",
-    "price": "390.47",
-    "change": "-0.43%",
-    "volume": "312,507"
+    "market_cap": "23.29B",
+    "pe": "32.76",
+    "price": "411.21",
+    "change": "-0.12%",
+    "volume": "331,505"
+  },
+  {
+    "rank": "37",
+    "ticker": "CRS",
+    "company": "Carpenter Technology Corp",
+    "sector": "Industrials",
+    "industry": "Metal Fabrication",
+    "country": "USA",
+    "market_cap": "20.92B",
+    "pe": "40.09",
+    "price": "422.08",
+    "change": "-4.76%",
+    "volume": "431,859"
   },
   {
     "rank": "38",
-    "ticker": "MTSI",
-    "company": "MACOM Technology Solutions Holdings Inc",
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "country": "USA",
-    "market_cap": "20.54B",
-    "pe": "86.50",
-    "price": "268.95",
-    "change": "3.46%",
-    "volume": "1,011,826"
-  },
-  {
-    "rank": "39",
     "ticker": "WWD",
     "company": "Woodward Inc",
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
     "country": "USA",
-    "market_cap": "20.44B",
-    "pe": "38.50",
-    "price": "346.22",
-    "change": "1.07%",
-    "volume": "355,178"
+    "market_cap": "19.13B",
+    "pe": "36.03",
+    "price": "323.95",
+    "change": "-3.95%",
+    "volume": "686,053"
+  },
+  {
+    "rank": "39",
+    "ticker": "MTSI",
+    "company": "MACOM Technology Solutions Holdings Inc",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "country": "USA",
+    "market_cap": "18.50B",
+    "pe": "77.92",
+    "price": "242.26",
+    "change": "-11.88%",
+    "volume": "1,083,112"
   },
   {
     "rank": "40",
@@ -513,49 +513,62 @@
     "sector": "Industrials",
     "industry": "Engineering & Construction",
     "country": "USA",
-    "market_cap": "14.88B",
-    "pe": "35.06",
-    "price": "486.49",
-    "change": "5.75%",
-    "volume": "570,122"
+    "market_cap": "14.49B",
+    "pe": "34.13",
+    "price": "473.77",
+    "change": "-7.29%",
+    "volume": "616,166"
   },
   {
     "rank": "41",
-    "ticker": "FN",
-    "company": "Fabrinet",
+    "ticker": "DSGX",
+    "company": "Descartes Systems Group Inc",
     "sector": "Technology",
-    "industry": "Electronic Components",
-    "country": "Cayman Islands",
-    "market_cap": "14.60B",
-    "pe": "31.23",
-    "price": "407.40",
-    "change": "3.14%",
-    "volume": "578,593"
+    "industry": "Software - Application",
+    "country": "Canada",
+    "market_cap": "6.82B",
+    "pe": "36.99",
+    "price": "79.57",
+    "change": "4.65%",
+    "volume": "705,763"
   },
   {
     "rank": "42",
-    "ticker": "SIMO",
-    "company": "Silicon Motion Technology Corp ADR",
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "country": "Hong Kong",
-    "market_cap": "8.69B",
-    "pe": "30.04",
-    "price": "256.21",
-    "change": "8.70%",
-    "volume": "744,032"
-  },
-  {
-    "rank": "43",
     "ticker": "GLBE",
     "company": "Global E Online Ltd",
     "sector": "Consumer Cyclical",
     "industry": "Internet Retail",
     "country": "Israel",
-    "market_cap": "6.45B",
-    "pe": "43.77",
-    "price": "38.37",
-    "change": "0.21%",
-    "volume": "899,509"
+    "market_cap": "6.29B",
+    "pe": "42.69",
+    "price": "37.42",
+    "change": "0.65%",
+    "volume": "918,673"
+  },
+  {
+    "rank": "43",
+    "ticker": "PAY",
+    "company": "Paymentus Holdings Inc",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "country": "USA",
+    "market_cap": "4.67B",
+    "pe": "56.29",
+    "price": "37.07",
+    "change": "1.90%",
+    "volume": "556,983"
+  },
+  {
+    "rank": "44",
+    "ticker": "ETON",
+    "company": "Eton Pharmaceuticals Inc",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers - Specialty & Generic",
+    "country": "USA",
+    "market_cap": "1.65B",
+    "pe": "152.54",
+    "price": "57.69",
+    "change": "1.07%",
+    "volume": "220,470"
   }
 ]
