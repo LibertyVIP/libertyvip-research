@@ -486,9 +486,9 @@ def load_config() -> dict[str, object]:
         return json.loads(ASSETS_PATH.read_text(encoding="utf-8"))
     return {
         "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ZECUSDT", "SUIUSDT", "XRPUSDT", "BNBUSDT"],
-        "timeframes": ["15m", "1h", "4h", "1d"],
-        "defaultMode": "intraday",
-        "modes": {"swing": ["1d", "4h", "1h"], "intraday": ["4h", "1h", "15m"], "active": ["1h", "15m"]},
+        "timeframes": ["4h", "1d"],
+        "defaultMode": "swing",
+        "modes": {"swing": ["1d", "4h"], "market view": ["4h", "1d"]},
     }
 
 
@@ -703,11 +703,9 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
     mode_buttons = []
     for name, frames in modes.items():  # type: ignore[union-attr]
         frames_text = ",".join(frames)
-        primary = frames[0] if str(name).lower() == "swing" else frames[0]
-        if str(name).lower() == "intraday" and "4h" in frames:
+        primary = frames[0]
+        if str(name).lower() in ("market view", "market", "context") and "4h" in frames:
             primary = "4h"
-        if str(name).lower() == "active" and "1h" in frames:
-            primary = "1h"
         mode_buttons.append(
             f'<button class="mode-button" data-frames="{escape(frames_text)}" data-primary="{escape(str(primary))}">{escape(str(name).title())}</button>'
         )
@@ -756,8 +754,8 @@ def render_html(config: dict[str, object], reports: list[dict[str, object]]) -> 
 </head>
 <body>
   <h1>LibertyVIP Crypto Watchlist</h1>
-  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur des chandelles publiques multi-sources (Bybit, OKX, Binance en backup) + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Pour éviter les doublons, le dashboard affiche une seule carte par actif selon la timeframe sélectionnée.</p>
-  <nav class="toolbar"><span>Mode</span>{''.join(mode_buttons)}<span class="hint">Swing ouvre 1D · Intraday ouvre 4H · Active ouvre 1H</span></nav>
+  <p class="sub">Généré le {escape(generated)}. Watchlist gratuite basée sur des chandelles publiques multi-sources (Bybit, OKX, Binance en backup) + données gratuites DeFiLlama : TVL, stablecoins, volumes DEX et fees/revenue quand disponibles. Cette version se concentre volontairement sur les timeframes 4H et 1D pour garder une lecture globale du marché.</p>
+  <nav class="toolbar"><span>Mode</span>{''.join(mode_buttons)}<span class="hint">Swing ouvre 1D · Market View ouvre 4H</span></nav>
   <nav class="toolbar"><span>Timeframe</span>{''.join(timeframe_buttons)}</nav>
   <main class="cards">{render_cards(reports)}</main>
   <p class="note">Éducatif seulement. Pas un conseil financier personnalisé. Les cryptos sont volatiles : confirmer le contexte, le risque et le plan avant toute entrée.</p>
