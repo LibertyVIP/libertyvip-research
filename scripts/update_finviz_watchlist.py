@@ -7,13 +7,14 @@ import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+from urllib.parse import parse_qs, urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
 STOCKS_DIR = ROOT / "stocks"
 BASE = "https://finviz.com"
-FILTERS = "fa_epsqoq_pos,fa_pe_o30,fa_profitmargin_pos,fa_quickratio_o1,fa_roa_o10,fa_roe_o10,fa_roi_o10,fa_salesqoq_pos,sh_avgvol_o500,sh_short_u5"
-SCREENER_URL = f"{BASE}/screener.ashx?v=111&f={FILTERS}&o=-marketcap"
+FILTERS = "fa_epsqoq_pos,fa_pe_o30,fa_netmargin_pos,fa_quickratio_o1,fa_roa_o10,fa_roe_o10,fa_roi_o10,fa_salesqoq_pos,sh_avgvol_o500,sh_short_u5"
+SCREENER_URL = f"{BASE}/screener/stocks?v=111&f={FILTERS}&o=-marketcap"
 
 
 def fetch(url: str, attempts: int = 3) -> str:
@@ -43,14 +44,45 @@ def clean(value: str) -> str:
     return value.strip()
 
 
+def screener_props(page_html: str) -> dict | None:
+    # Finviz's new screener embeds its rows in an SSR JSON island.
+    for match in re.finditer(r'<script\b[^>]*data-ssr-props[^>]*>(.*?)</script>', page_html, re.S):
+        props = json.loads(match.group(1))
+        if isinstance(props.get("data"), dict) and "rows" in props["data"]:
+            active = set(parse_qs(urlsplit(props["url"]).query).get("f", [""])[0].split(","))
+            missing = set(FILTERS.split(",")) - active
+            if missing:
+                raise RuntimeError(f"Finviz dropped required filters: {sorted(missing)}")
+            return props
+    return None
+
+
 def parse_rows(page_html: str) -> list[dict[str, str]]:
+    props = screener_props(page_html)
+    if props is not None:
+        rows = []
+        for index, item in enumerate(props["data"]["rows"]):
+            text, numbers = item["text"], item["numbers"]
+            def number(key: str, *, signed: bool = False) -> str:
+                value = numbers.get(key)
+                return "-" if value is None else (f"{value:+.2f}" if signed else f"{value:.2f}")
+            cap = numbers.get("marketCap")  # Finviz reports market cap in millions.
+            rows.append({
+                "rank": str(props["data"]["firstRow"] + index + 1),
+                **{key: text[key] for key in ("ticker", "company", "sector", "industry", "country")},
+                "market_cap": "-" if cap is None else f"{cap / 1000:.2f}B",
+                "pe": number("PE"), "price": number("price"),
+                "change": "-" if numbers.get("change") is None else number("change", signed=True) + "%",
+                "volume": "-" if numbers.get("volume") is None else f'{numbers["volume"]:,.0f}',
+            })
+        return rows
     rows: list[dict[str, str]] = []
     for row_match in re.finditer(r"<tr class=\"styled-row.*?</tr>", page_html, re.S):
         row = row_match.group(0)
         cells = [clean(cell) for cell in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)]
         ticker_match = re.search(r'data-boxover-ticker="([A-Z. -]+)"', row)
-        ticker = ticker_match.group(1).strip() if ticker_match else cells[1]
         if len(cells) >= 11 and cells[0].isdigit():
+            ticker = ticker_match.group(1).strip() if ticker_match else cells[1]
             rows.append(
                 {
                     "rank": cells[0],
@@ -71,16 +103,34 @@ def parse_rows(page_html: str) -> list[dict[str, str]]:
 
 def get_rows() -> list[dict[str, str]]:
     all_rows: list[dict[str, str]] = []
-    for index in range(5):
-        start = 1 + index * 20
+    start = 1
+    expected_total = None
+    while True:
         url = SCREENER_URL if start == 1 else f"{SCREENER_URL}&r={start}"
-        rows = parse_rows(fetch(url))
+        page = fetch(url)
+        props = screener_props(page)
+        if props is not None:
+            data = props["data"]
+            if data["firstRow"] != start - 1:
+                raise RuntimeError("Finviz returned the wrong page; publication cancelled")
+            if expected_total is None:
+                expected_total = data["totalCount"]
+            elif data["totalCount"] != expected_total:
+                raise RuntimeError("Finviz result count changed during pagination; retry the update")
+        rows = parse_rows(page)
         if not rows:
             break
         all_rows.extend(rows)
-        if len(rows) < 20:
+        if expected_total is not None and len(all_rows) >= expected_total:
             break
+        if expected_total is None and len(rows) < 20:
+            break
+        start += len(rows)
         time.sleep(0.5)
+    if expected_total is not None and len(all_rows) != expected_total:
+        raise RuntimeError(f"Incomplete Finviz results: {len(all_rows)}/{expected_total}")
+    if len({row["ticker"] for row in all_rows}) != len(all_rows):
+        raise RuntimeError("Duplicate Finviz tickers; publication cancelled")
     return all_rows
 
 
@@ -118,7 +168,7 @@ def render_cards(rows: list[dict[str, str]]) -> str:
 
 def render_html(rows: list[dict[str, str]]) -> str:
     generated = time.strftime("%Y-%m-%d %H:%M:%S UTC")
-    finviz_link = f"https://finviz.com/screener.ashx?v=111&f={FILTERS}&o=-marketcap"
+    finviz_link = SCREENER_URL
     return f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -149,6 +199,7 @@ def render_html(rows: list[dict[str, str]]) -> str:
 </head>
 <body>
   <h1>Finviz LibertyVIP Watchlist</h1>
+  <p class="sub"><strong>{len(rows)} titres dans la watchlist</strong></p>
   <p class="sub">Généré le {html.escape(generated)}. Cette page applique la grille fondamentale Finviz LibertyVIP. Les graphiques servent à repérer visuellement les titres en tendance haussière sur plusieurs semaines et en consolidation type flag. Lien screener original : <a href="{finviz_link}" target="_blank" rel="noopener">ouvrir dans Finviz</a>.</p>
   <div class="criteria">
     <span>P/E &gt; 30</span><span>Avg Vol &gt; 500K</span><span>Profit Margin positif</span><span>Quick Ratio &gt; 1</span><span>Sales Q/Q positif</span><span>EPS Q/Q positif</span><span>ROA/ROE/ROIC &gt; 10%</span><span>Short Float &lt; 5%</span>

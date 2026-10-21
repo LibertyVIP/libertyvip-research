@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Test Finviz parser
+        run: python -m unittest discover -s scripts -p test_finviz_watchlist.py
+
       - name: Refresh Finviz watchlist
         run: python scripts/update_finviz_watchlist.py
 
